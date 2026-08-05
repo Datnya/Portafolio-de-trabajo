@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datnya Monzón | Desarrolladora de Software & Soluciones Digitales</title>
+    <meta name="description" content="Portafolio profesional de Datnya Monzón. Desarrollo de software, páginas web y soluciones digitales personalizadas para empresas.">
+    <meta name="keywords" content="Datnya Monzón, desarrollo web, software, soluciones digitales, portafolio">
+    <meta name="author" content="Datnya Monzón">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Datnya Monzón | Portafolio Profesional">
+    <meta property="og:description" content="Desarrollo de software, páginas web y soluciones digitales personalizadas.">
+    <meta property="og:type" content="website">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ======================== NAVBAR ======================== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+                <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
+                <li><a href="#contacto" class="nav-link">Contacto</a></li>
+            </ul>
+            <div class="nav-social">
+                <a href="https://www.linkedin.com/in/datnya-monz%C3%B3n-9839a0356/" target="_blank" class="nav-icon" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/foxystudio.digital/" target="_blank" class="nav-icon" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menú de navegación">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ======================== HERO SECTION ======================== -->
+    <section class="hero" id="inicio">
+        <div class="hero-bg-decoration">
+            <div class="hero-circle hero-circle-1"></div>
+            <div class="hero-circle hero-circle-2"></div>
+            <div class="hero-line hero-line-1"></div>
+            <div class="hero-line hero-line-2"></div>
+        </div>
+
+        <div class="hero-container">
+            <!-- Left: Photo -->
+            <div class="hero-image-wrapper animate-on-scroll slide-left">
+                <img src="assets/datnya-foto.png" alt="Datnya Monzón - Desarrolladora de Software" class="hero-photo" id="heroPhoto">
+            </div>
+
+            <!-- Right: Text -->
+            <div class="hero-content animate-on-scroll slide-right">
+                <p class="hero-greeting">¡Hola! Soy</p>
+                <h1 class="hero-name">
+                    Datnya
+                    <span class="name-highlight">Monzón</span>
+                </h1>
+                <div class="hero-divider">
+                    <span class="divider-line"></span>
+                    <span class="divider-dot"></span>
+                    <span class="divider-line"></span>
+                </div>
+                <p class="hero-description">
+                    Me dedico al <strong>desarrollo de software</strong>, <strong>páginas web</strong> y 
+                    <strong>soluciones digitales personalizadas</strong>. Me gusta crear herramientas que 
+                    realmente se adapten a las necesidades de cada persona o empresa.
+                </p>
+                <button class="btn-portfolio" id="openPortfolio">
+                    <span class="btn-content">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                        </svg>
+                        Abrir mi portafolio de trabajos
+                    </span>
+                    <span class="btn-arrow">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <span class="scroll-text">Scroll</span>
+            <div class="scroll-line">
+                <div class="scroll-dot"></div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- ======================== STATS SECTION ======================== -->
+    <section class="stats" id="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card animate-on-scroll fade-up">
+                    <div class="stat-number" data-target="35">0</div>
+                    <p class="stat-label">Proyectos Completados</p>
+                </div>
+                <div class="stat-card animate-on-scroll fade-up">
+                    <div class="stat-number" data-target="28">0</div>
+                    <p class="stat-label">Clientes Satisfechos</p>
+                </div>
+                <div class="stat-card animate-on-scroll fade-up">
+                    <div class="stat-number" data-target="5">0</div>
+                    <p class="stat-label">Años de Experiencia</p>
+                </div>
+                <div class="stat-card animate-on-scroll fade-up">
+                    <div class="stat-number" data-target="100">0</div>
+                    <p class="stat-label">% Compromiso</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================== PROJECTS SECTION ======================== -->
+    <section class="projects" id="proyectos">
+        <div class="container">
+            <div class="section-header animate-on-scroll fade-up">
+                <span class="section-tag">Portafolio</span>
+                <h2 class="section-title">Mis <span>Servicios</span></h2>
+                <p class="section-subtitle">Casos de éxito que demuestran resultados reales para empresas y personas</p>
+                <div class="title-underline"></div>
+            </div>
+
+            <!-- Project Category Tabs -->
+            <div class="service-cards-grid animate-on-scroll fade-up">
+                <div class="service-card active" data-tab="web" id="tab-btn-web">
+                    <div class="service-card-image placeholder-image">
+                        <span>Imagen de servicio</span>
+                    </div>
+                    <div class="service-card-content">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        <h3>Páginas Web</h3>
+                        <p>Diseño y desarrollo moderno</p>
+                    </div>
+                </div>
+                <div class="service-card" data-tab="software" id="tab-btn-software">
+                    <div class="service-card-image placeholder-image">
+                        <span>Imagen de servicio</span>
+                    </div>
+                    <div class="service-card-content">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                        <h3>Software Adaptado</h3>
+                        <p>Sistemas a medida para tu empresa</p>
+                    </div>
+                </div>
+                <div class="service-card" data-tab="platforms" id="tab-btn-platforms">
+                    <div class="service-card-image placeholder-image">
+                        <span>Imagen de servicio</span>
+                    </div>
+                    <div class="service-card-content">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                        <h3>Plataformas Digitales</h3>
+                        <p>Gestión y automatización online</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== TAB: Páginas Web ===== -->
+            
+            <!-- ===== TAB: Páginas Web ===== -->
+            <div class="project-panel active" id="panel-web">
+                <div class="project-layout-split animate-on-scroll fade-up">
+                    <div class="project-card">
+                        <div class="project-hook">
+                            <div class="client-logo-wrapper" style="margin-bottom: 1.5rem;">
+                                <img src="assets/LOGO APM.jpg" alt="APM GROUP" style="height: 40px; width: auto;">
+                            </div>
+                            <div class="hook-badge">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                Mis Proyectos
+                            </div>
+                            <h3 class="hook-title">Modernización y automatización de una página web corporativa</h3>
+                        </div>
+
+                        <div class="project-body project-body-single">
+                            <div class="project-info">
+                                <div class="project-dual">
+                                    <div class="dual-card challenge">
+                                        <div class="dual-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                                        </div>
+                                        <h4>El Reto</h4>
+                                        <p>Una página web desactualizada que no reflejaba la calidad de la empresa y requería constantes actualizaciones manuales.</p>
+                                    </div>
+                                    <div class="dual-card solution">
+                                        <div class="dual-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+                                        </div>
+                                        <h4>La Solución</h4>
+                                        <p>Rediseñé completamente el sitio e incorporé herramientas interactivas y automatizaciones para mejorar la experiencia del usuario y reducir tareas manuales.</p>
+                                    </div>
+                                </div>
+
+                                <div class="project-results">
+                                    <h4 class="results-title">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                        El Resultado
+                                    </h4>
+                                    <div class="results-grid">
+                                        <div class="result-item"><div class="result-check">✔</div><p>Imagen mucho más profesional</p></div>
+                                        <div class="result-item"><div class="result-check">✔</div><p>Simulador de auditoría personalizado</p></div>
+                                        <div class="result-item"><div class="result-check">✔</div><p>Webinars actualizados automáticamente</p></div>
+                                        <div class="result-item"><div class="result-check">✔</div><p>Diseño optimizado para computadoras y dispositivos móviles</p></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="project-gallery">
+                                <h4 class="gallery-title">Galería del Proyecto</h4>
+                                <div class="gallery-grid">
+                                    <div class="gallery-item placeholder-item"><div class="placeholder-content"><span>Próximamente</span></div></div>
+                                    <div class="gallery-item placeholder-item"><div class="placeholder-content"><span>Próximamente</span></div></div>
+                                    <div class="gallery-item placeholder-item"><div class="placeholder-content"><span>Próximamente</span></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- End project-card -->
+
+                    <div class="project-gifs">
+                        <img src="assets/gif-web-1.gif" alt="GIF" class="raw-gif">
+                        <img src="assets/gif-web-2.gif" alt="GIF" class="raw-gif">
+                        <img src="assets/gif-web-3.gif" alt="GIF" class="raw-gif">
+                    </div>
+                </div> <!-- End project-layout-split -->
+            </div> <!-- End panel-web -->
+
+            <!-- ===== TAB: Software Adaptado ===== -->
+            <div class="project-panel" id="panel-software">
+                <div class="project-layout-split animate-on-scroll fade-up">
+                    <div class="project-card">
+                        <div class="project-hook">
+                            <div class="hook-badge">Mis Proyectos</div>
+                            <h3 class="hook-title">Sistema de gestión para estacionamiento</h3>
+                        </div>
+
+                        <div class="project-body project-body-single">
+                            <div class="project-info">
+                                <div class="project-dual">
+                                    <div class="dual-card challenge">
+                                        <h4>El Reto</h4>
+                                        <p>El estacionamiento registraba manualmente el ingreso y salida de vehículos, lo que ocasionaba pérdida de información y dificultaba el control de los ingresos.</p>
+                                    </div>
+                                    <div class="dual-card solution">
+                                        <h4>La Solución</h4>
+                                        <p>Desarrollé una aplicación personalizada para digitalizar todo el proceso de atención, desde el registro de vehículos hasta el control de pagos y reportes.</p>
+                                    </div>
+                                </div>
+
+                                <div class="project-results">
+                                    <h4 class="results-title">El Resultado</h4>
+                                    <div class="results-grid">
+                                        <div class="result-item"><div class="result-check">✔</div><p>Registro digital de vehículos</p></div>
+                                        <div class="result-item"><div class="result-check">✔</div><p>Tickets automáticos</p></div>
+                                        <div class="result-item"><div class="result-check">✔</div><p>Control de ingresos en tiempo real</p></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- End project-card -->
+                    <div class="project-gifs">
+                        <!-- Placeholders for software GIFs, the user can add them later or we leave empty for now, but we add the structure -->
+                        <div class="gallery-item placeholder-item" style="height:200px;"><div class="placeholder-content"><span>Próximamente</span></div></div>
+                    </div>
+                </div> <!-- End project-layout-split -->
+            </div> <!-- End panel-software -->
+
+            <!-- ===== TAB: Plataformas Digitales ===== -->
+            <div class="project-panel" id="panel-platforms">
+                <div class="project-layout-split animate-on-scroll fade-up">
+                    <div class="project-card">
+                        <div class="project-hook">
+                            <div class="hook-badge">Mis Proyectos</div>
+                            <h3 class="hook-title">Plataforma de gestión para consultoras</h3>
+                        </div>
+
+                        <div class="project-body project-body-single">
+                            <div class="project-info">
+                                <div class="project-dual">
+                                    <div class="dual-card challenge">
+                                        <h4>El Reto</h4>
+                                        <p>La empresa gestionaba múltiples proyectos y consultores desde diferentes ubicaciones, lo que dificultaba conocer el avance real de cada servicio y centralizar toda la información.</p>
+                                    </div>
+                                    <div class="dual-card solution">
+                                        <h4>La Solución</h4>
+                                        <p>Desarrollé una plataforma web totalmente personalizada para gestionar clientes, proyectos, consultores y el seguimiento de cada servicio desde un solo lugar y accesible desde cualquier dispositivo.</p>
+                                    </div>
+                                </div>
+
+                                <div class="project-results">
+                                    <h4 class="results-title">El Resultado</h4>
+                                    <div class="results-grid">
+                                        <div class="result-item"><div class="result-check">✔</div><p>Control centralizado de todos los proyectos</p></div>
+                                        <div class="result-item"><div class="result-check">✔</div><p>Seguimiento en tiempo real</p></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- End project-card -->
+                    <div class="project-gifs">
+                         <div class="gallery-item placeholder-item" style="height:200px;"><div class="placeholder-content"><span>Próximamente</span></div></div>
+                    </div>
+                </div> <!-- End project-layout-split -->
+            </div> <!-- End panel-platforms -->
+        </div>
+    </section>
+
+
+    
+
+    <!-- ======================== CONTACT SECTION ======================== -->
+    <section class="contact" id="contacto">
+        <div class="container">
+            <div class="section-header animate-on-scroll fade-up">
+                <span class="section-tag">Hablemos</span>
+                <h2 class="section-title">Contácta<span>me</span></h2>
+                <p class="section-subtitle">¿Tienes un proyecto en mente? Me encantaría ayudarte a hacerlo realidad</p>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="contact-grid">
+<div class="contact-left-col">
+                <!-- Contact Cards -->
+                <div class="contact-cards animate-on-scroll fade-up">
+                    <!-- Celular (WhatsApp) -->
+                    <a href="https://wa.me/51912424331?text=Hola%20Datnya%2C%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20hablar%20sobre%20un%20proyecto." target="_blank" rel="noopener noreferrer" class="contact-card">
+                        <div class="contact-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div class="contact-card-info">
+                            <span class="contact-label">Celular</span>
+                            <span class="contact-value">+51 912 424 331</span>
+                        </div>
+                        <div class="contact-card-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                    </a>
+
+                    <!-- Email -->
+                    <a href="mailto:datnyamonzon1@gmail.com" class="contact-card">
+                        <div class="contact-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </div>
+                        <div class="contact-card-info">
+                            <span class="contact-label">Correo electrónico</span>
+                            <span class="contact-value">datnyamonzon1@gmail.com</span>
+                        </div>
+                        <div class="contact-card-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                    </a>
+
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/in/datnya-monz%C3%B3n-9839a0356/" target="_blank" rel="noopener noreferrer" class="contact-card linkedin-card">
+                        <div class="contact-card-icon linkedin-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        </div>
+                        <div class="contact-card-info">
+                            <span class="contact-label">LinkedIn</span>
+                            <span class="contact-value">@datnyamonzon</span>
+                        </div>
+                        <div class="contact-card-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Contact CTA -->
+                <div class="contact-cta animate-on-scroll fade-up">
+                    <div class="cta-content">
+                        <h3>¿Listo para empezar tu proyecto?</h3>
+                        <p>Escríbeme directamente por WhatsApp y hablemos sobre cómo puedo ayudarte.</p>
+                        <a href="https://wa.me/51912424331?text=Hola%20Datnya%2C%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20hablar%20sobre%20un%20proyecto." target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="whatsapp-icon"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                            Escríbeme por WhatsApp
+                        </a>
+                    </div>
+                    <div class="cta-decoration">
+                        <div class="cta-circle cta-circle-1"></div>
+                        <div class="cta-circle cta-circle-2"></div>
+                        <div class="cta-circle cta-circle-3"></div>
+                    </div>
+                </div>
+</div>
+<!-- Contact Form -->
+            <div class="contact-form-wrapper animate-on-scroll fade-up">
+                <div class="form-header">
+                    <h3 class="form-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                        Solicita una cotización
+                    </h3>
+                    <p class="form-subtitle">Completa el formulario y me pondré en contacto contigo a la brevedad.</p>
+                </div>
+                <form id="contactForm" action="https://formspree.io/f/xpwdgkqa" method="POST" class="quote-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nombre">Nombre y Apellido <span class="required">*</span></label>
+                            <input type="text" id="nombre" name="nombre" placeholder="Ej. Juan Pérez" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Número de contacto <span class="required">*</span></label>
+                            <input type="tel" id="telefono" name="telefono" placeholder="Ej. +51 999 999 999" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Correo corporativo <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" placeholder="Ej. contacto@empresa.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="servicio">Tipo de servicio <span class="required">*</span></label>
+                            <select id="servicio" name="servicio" required>
+                                <option value="" disabled selected>Selecciona una opción</option>
+                                <option value="Página Web">Página Web</option>
+                                <option value="Software Adaptado">Software Adaptado</option>
+                                <option value="Plataforma Digital">Plataforma Digital</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-full">
+                        <label for="comentario">Comentarios adicionales</label>
+                        <textarea id="comentario" name="comentario" rows="4" placeholder="Cuéntame brevemente sobre tu proyecto o necesidad..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit" id="btnSubmit">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                        Enviar solicitud de cotización
+                    </button>
+                </form>
+                <div class="form-success" id="formSuccess" style="display:none;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    <h4>¡Solicitud enviada con éxito!</h4>
+                    <p>Me pondré en contacto contigo pronto. ¡Gracias por tu interés!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+
+    <!-- ======================== TRUSTED BY SECTION ======================== -->
+    <section class="trusted-by" id="clientes">
+        <div class="container">
+            <div class="trusted-header animate-on-scroll fade-up">
+                <p class="trusted-subtitle">Empresas que confían en mi trabajo</p>
+            </div>
+            
+            <div class="carousel-container animate-on-scroll fade-up">
+                <div class="carousel-track">
+                    <!-- Original logos -->
+                    <div class="carousel-slide">
+                        <img src="assets/LOGO APM.jpg" alt="APM Group" class="carousel-logo">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="assets/LOGO APM.jpg" alt="APM Group" class="carousel-logo">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="assets/LOGO APM.jpg" alt="APM Group" class="carousel-logo">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="assets/LOGO APM.jpg" alt="APM Group" class="carousel-logo">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="assets/LOGO APM.jpg" alt="APM Group" class="carousel-logo">
+                    </div>
+                    
+                    <!-- Duplicated logos for infinite scroll effect -->
+                    <div class="carousel-slide">
+                        <img src="assets/LOGO APM.jpg" alt="APM Group" class="carousel-logo">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="assets/LOGO APM.jpg" alt="APM Group" class="carousel-logo">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="assets/LOGO APM.jpg" alt="APM Group" class="carousel-logo">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="assets/LOGO APM.jpg" alt="APM Group" class="carousel-logo">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="assets/LOGO APM.jpg" alt="APM Group" class="carousel-logo">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================== FOOTER ======================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <p>Transformando ideas en soluciones digitales.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#inicio">Inicio</a>
+                    <a href="#proyectos">Proyectos</a>
+                    <a href="#contacto">Contacto</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/in/datnya-monz%C3%B3n-9839a0356/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                    <a href="https://wa.me/51912424331" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Datnya Monzón. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
