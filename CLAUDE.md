@@ -44,30 +44,35 @@ vive dentro del caso, nunca en la rejilla.
 
 ## Firma — decidido
 
-El portafolio lo firma **Datnya Monzón como persona**. Foxy Studio no aparece en
-el sitio: el enlace de Instagram (`foxystudio.digital`) ya se eliminó del nav.
-La voz es en primera persona del singular.
+El portafolio lo firma **Datnya Monzón como persona**. La voz es en primera
+persona del singular.
+
+Cabo suelto: el nav volvió a incluir el enlace de Instagram, y sigue apuntando a
+`foxystudio.digital` —el estudio— mientras el sitio lo firma la persona. Hay que
+decidir si se cambia por un Instagram propio o se acepta como nombre comercial.
 
 ## Estado
 
-Rama `YAMIL`, dos commits por encima de `main`.
+Rama `YAMIL`. El rebranding está **terminado y en el repositorio**: `index.html`,
+`estilos.css`, `sitio.js` y `assets/` son el sitio vivo. Se arranca con
+`python3 -m http.server 8000` — ver `README.md`.
 
 **Fase 1 (saneo) — hecha.** Carrusel de un logo repetido, seis placeholders y
-Foxy Studio eliminados. Assets de 28 MB a 852 KB (GIF→MP4, retrato→WebP con
-alpha). `alt` descriptivos escritos leyendo un fotograma real de cada vídeo.
-Correo del formulario ya no es obligatorio ni «corporativo». Medida de lectura
-corregida en los dos elementos que se pasaban. 23 reglas CSS huérfanas fuera.
+Foxy Studio eliminados. Assets de 28 MB a 864 KB. `alt` descriptivos. Correo del
+formulario ya no obligatorio. 23 reglas CSS huérfanas fuera.
 
-**Fase 2 (estructura) — pendiente.** `proyectos.json` para que subir un trabajo
-sea añadir un objeto y no copiar 80 líneas de HTML; rejilla con filtros en lugar
-de las tres pestañas actuales; `styles.css` consumiendo `tokens.css`.
+**Fase 2 (estructura) — hecha.** Los proyectos y servicios viven en dos arrays al
+inicio de `sitio.js`: añadir un trabajo es añadir un objeto. Rejilla con filtros
+y carril horizontal en lugar de las tres pestañas.
 
-**Fase 3 (composición) — pendiente.** Héroe con el retrato anclado sobre una
-interfaz real desenfocada; franja de servicios; antes/después de APM; tres
-métricas de cliente en lugar de las cuatro actuales; contacto de un solo canal.
+**Fase 3 (composición) — hecha.** Héroe con suelo y zorro al 4 %; franja de
+servicios con marco 16:9 y conmutador; tres métricas en vez de cuatro; contacto
+de un solo canal con formulario plegado; nav flotante que se pliega al bajar.
 
-Orden de trabajo: la tarjeta de trabajo primero, porque define el lenguaje
-visual de toda la rejilla. El héroe después.
+`styles.css` y `script.js` del sitio anterior salieron del árbol; siguen en el
+historial. Los `.py` de la raíz son de esa versión y ya no sirven.
+
+Mapa completo en `arquitectura.md`.
 
 ## Pendiente del cliente
 

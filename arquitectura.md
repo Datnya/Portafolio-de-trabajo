@@ -3,9 +3,9 @@
 Mapa de cómo está construido el sitio de Datnya Monzón. Todos los números salen de
 medir el render, no de estimar.
 
-> **Dónde vive hoy:** el sitio rediseñado está en la carpeta temporal de la sesión
-> (`scratchpad/sitio/`), servido en `localhost:8127`. **Todavía no está en la rama
-> `YAMIL`** — bajarlo es el siguiente paso pendiente.
+> **Dónde vive:** en este repositorio, rama `YAMIL`. Para verlo:
+> `python3 -m http.server 8000` y entrar a `http://localhost:8000`.
+> Instrucciones completas en `README.md`.
 
 ---
 
@@ -13,14 +13,14 @@ medir el render, no de estimar.
 
 | Archivo | Líneas | Qué contiene |
 |---|---|---|
-| `index.html` | 165 | Estructura estática. Las secciones vacías las rellena el JS. |
-| `estilos.css` | 329 | Tokens, sistema y todos los componentes. Sin framework. |
-| `sitio.js` | 264 | Datos de proyectos y servicios + render + interacción. |
+| `index.html` | 171 | Estructura estática. Las secciones vacías las rellena el JS. |
+| `estilos.css` | 363 | Tokens, sistema y todos los componentes. Sin framework. |
+| `sitio.js` | 306 | Datos de proyectos y servicios + render + interacción. |
 
 **Sin dependencias.** Ni React, ni Tailwind, ni framework de animación. Lo único
 externo es la fuente Poppins desde Google Fonts.
 
-Peso total con assets: **856 KB**. El sitio original pesaba 28 MB.
+Peso total con assets: **864 KB**. El sitio original pesaba 28 MB.
 
 ---
 
@@ -31,7 +31,7 @@ quién habla**: negro cuando habla Datnya, blanco cuando habla el trabajo.
 
 | # | Bloque | `id` | Alto | Fondo |
 |---|---|---|---|---|
-| 0 | Nav | — | 72 px | `#1A1A1A` |
+| 0 | Nav | — | 58 px, flotante | `#1A1A1A` |
 | 1 | Héroe + Prueba | `#inicio` | 1 122 px | blanco |
 | 2 | Servicios | `#servicios` | 884 px | `#1A1A1A` |
 | 3 | Trabajo + Caso | `#trabajo` | 1 898 px | blanco |
@@ -44,13 +44,19 @@ Alto total: **5 186 px**.
 
 ## 3. Qué hay en cada bloque
 
-### Nav — pegajoso, tres columnas
-`Datnya Monzón` (texto, izquierda) · `Inicio · Trabajo · Contacto` (centrado a
-0 px del centro exacto) · LinkedIn e Instagram (derecha).
+### Nav — píldora flotante que se pliega
+`Datnya Monzón` (texto, izquierda) · `Inicio · Trabajo · Contacto` (centrado) ·
+LinkedIn e Instagram (derecha). Flota a 18 px del borde superior, no ocupa el
+ancho completo.
 
-Sigue el scroll: JS marca el enlace de la sección en la que estás. El activo va en
-**blanco con subrayado blanco** — nunca naranja, porque indica *dónde estás*, no un
-cambio. Debajo de 680 px pasa a dos filas.
+**Se pliega a un círculo de 58 px al bajar** y se despliega al subir 80 px desde
+el punto más profundo alcanzado, o al pulsarla. El nombre, los enlaces y las redes
+se ocultan a la vez, cada uno con su dirección de salida. La anchura desplegada la
+mide el JS y la fija en píxeles: `width:auto` no es animable.
+
+Sigue el scroll: el enlace de la sección activa va en **blanco con subrayado
+blanco** — nunca naranja, porque indica *dónde estás*, no un cambio. Debajo de
+680 px pasa a dos filas.
 
 ### Héroe
 Dos columnas: retrato a la izquierda, texto a la derecha.
@@ -58,12 +64,13 @@ Dos columnas: retrato a la izquierda, texto a la derecha.
 - **Retrato** — `datnya-foto.webp`, 740 px de alto, WebP con transparencia (44,6 KB).
 - **Suelo** — un degradado de 252 px en la base más una sombra de contacto elíptica
   de 315 px. Sin eso la figura flota; el recorte de la foto se leería como un corte.
+- **Zorro de fondo** — al 4 %, 435 × 577 px, asomando por el borde izquierdo. Va
+  por delante del suelo (z2) y por detrás del retrato (z3): detrás del suelo, el
+  degradado se lo tragaba.
 - **Texto** — eyebrow «¡Hola! Soy», nombre en Poppins 800, filete, párrafo, y **un
   solo botón**: «Ver el caso APM Group». Nombra su destino real; el original decía
   «Abrir mi portafolio» *dentro* del portafolio.
 - Entrada escalonada: los cinco elementos aparecen con 90 ms de diferencia.
-
-*(El zorro de fondo se probó al 3–5 % y se retiró.)*
 
 ### Prueba — tres cifras
 `35 · 28 · 5`, centradas, con la cifra en naranja a tamaño display. **Tres, no
@@ -76,7 +83,10 @@ animación de conteo — los números aparecen ya contados.
 ### Servicios — escaparate con prueba
 Franja negra. Marco **16:9 de 541 × 304 px** a la izquierda (misma proporción que
 el vídeo nativo 1280 × 720, así que no se recorta nada), contenido a la derecha,
-conmutador debajo.
+conmutador de píldoras debajo — la activa con fondo blanco, 17,4:1.
+
+El marco se centra **con flexbox, no con transform**: la animación de entrada
+anima `transform` y destruía el centrado. Está documentado en el apartado 6.
 
 Tres servicios, uno visible cada vez:
 
@@ -90,8 +100,6 @@ Cada uno lleva **qué incluye** (tres líneas) y un enlace que **abre su caso re
 más abajo. Donde la referencia ponía barras de «Latency 12 %», aquí va lo único
 verificable. Sin captura propia, el marco muestra el titular en tipografía
 perfilada — no finge ser una pantalla.
-
-El conmutador es texto subrayado a 12,8 px, más discreto que el nav a 14,4 px.
 
 ### Trabajo — carril con filtros
 Encabezado + filtros + carril horizontal de tarjetas + flechas.
