@@ -304,7 +304,7 @@ function initLightbox() {
     const lightboxImg = document.getElementById('lightbox-img');
 
     document.body.addEventListener('click', (e) => {
-        if (e.target.classList.contains('raw-gif') || (e.target.tagName === 'IMG' && e.target.closest('.project-panel'))) {
+        if (e.target.tagName === 'IMG' && (e.target.classList.contains('raw-gif') || e.target.closest('.project-panel'))) {
             lightbox.classList.add('active');
             lightboxImg.src = e.target.src;
         } else if (e.target.id === 'lightbox' || e.target.classList.contains('lightbox-close')) {

@@ -35,9 +35,6 @@
                 <a href="https://www.linkedin.com/in/datnya-monz%C3%B3n-9839a0356/" target="_blank" class="nav-icon" aria-label="LinkedIn">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                 </a>
-                <a href="https://www.instagram.com/foxystudio.digital/" target="_blank" class="nav-icon" aria-label="Instagram">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                </a>
             </div>
             <button class="nav-toggle" id="navToggle" aria-label="Menú de navegación">
                 <span></span>
@@ -59,7 +56,9 @@
         <div class="hero-container">
             <!-- Left: Photo -->
             <div class="hero-image-wrapper animate-on-scroll slide-left">
-                <img src="assets/datnya-foto.png" alt="Datnya Monzón - Desarrolladora de Software" class="hero-photo" id="heroPhoto">
+                <img src="assets/datnya-foto.webp" width="1000" height="1414" fetchpriority="high"
+                     alt="Retrato de Datnya Monzón, desarrolladora de software, de pie con los brazos cruzados"
+                     class="hero-photo" id="heroPhoto">
             </div>
 
             <!-- Right: Text -->
@@ -144,9 +143,6 @@
             <!-- Project Category Tabs -->
             <div class="service-cards-grid animate-on-scroll fade-up">
                 <div class="service-card active" data-tab="web" id="tab-btn-web">
-                    <div class="service-card-image placeholder-image">
-                        <span>Imagen de servicio</span>
-                    </div>
                     <div class="service-card-content">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
                         <h3>Páginas Web</h3>
@@ -154,9 +150,6 @@
                     </div>
                 </div>
                 <div class="service-card" data-tab="software" id="tab-btn-software">
-                    <div class="service-card-image placeholder-image">
-                        <span>Imagen de servicio</span>
-                    </div>
                     <div class="service-card-content">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
                         <h3>Software Adaptado</h3>
@@ -164,9 +157,6 @@
                     </div>
                 </div>
                 <div class="service-card" data-tab="platforms" id="tab-btn-platforms">
-                    <div class="service-card-image placeholder-image">
-                        <span>Imagen de servicio</span>
-                    </div>
                     <div class="service-card-content">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
                         <h3>Plataformas Digitales</h3>
@@ -224,22 +214,16 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="project-gallery">
-                                <h4 class="gallery-title">Galería del Proyecto</h4>
-                                <div class="gallery-grid">
-                                    <div class="gallery-item placeholder-item"><div class="placeholder-content"><span>Próximamente</span></div></div>
-                                    <div class="gallery-item placeholder-item"><div class="placeholder-content"><span>Próximamente</span></div></div>
-                                    <div class="gallery-item placeholder-item"><div class="placeholder-content"><span>Próximamente</span></div></div>
-                                </div>
-                            </div>
                         </div>
                     </div> <!-- End project-card -->
 
                     <div class="project-gifs">
-                        <img src="assets/gif-web-1.gif" alt="GIF" class="raw-gif">
-                        <img src="assets/gif-web-2.gif" alt="GIF" class="raw-gif">
-                        <img src="assets/gif-web-3.gif" alt="GIF" class="raw-gif">
+                        <video class="raw-gif" src="assets/apm-portada.mp4" autoplay muted loop playsinline
+                               preload="metadata" aria-label="Portada del nuevo sitio de APM Group: titular «Potenciamos organizaciones con normas internacionales, sostenibilidad e innovación» sobre fotografía de montaña"></video>
+                        <video class="raw-gif" src="assets/apm-servicios.mp4" autoplay muted loop playsinline
+                               preload="metadata" aria-label="Sección de servicios del sitio de APM Group: tarjetas de Consultoría y Auditoría con fotografía y enlace «Saber más»"></video>
+                        <video class="raw-gif" src="assets/apm-equipo.mp4" autoplay muted loop playsinline
+                               preload="metadata" aria-label="Sección «Quiénes somos» de APM Group: tarjetas del equipo que revelan el perfil de cada consultor al pasar el cursor"></video>
                     </div>
                 </div> <!-- End project-layout-split -->
             </div> <!-- End panel-web -->
@@ -276,12 +260,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div> <!-- End project-card -->
-                    <div class="project-gifs">
-                        <!-- Placeholders for software GIFs, the user can add them later or we leave empty for now, but we add the structure -->
-                        <div class="gallery-item placeholder-item" style="height:200px;"><div class="placeholder-content"><span>Próximamente</span></div></div>
-                    </div>
-                </div> <!-- End project-layout-split -->
+                    </div> <!-- End project-card -->                </div> <!-- End project-layout-split -->
             </div> <!-- End panel-software -->
 
             <!-- ===== TAB: Plataformas Digitales ===== -->
@@ -315,11 +294,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div> <!-- End project-card -->
-                    <div class="project-gifs">
-                         <div class="gallery-item placeholder-item" style="height:200px;"><div class="placeholder-content"><span>Próximamente</span></div></div>
-                    </div>
-                </div> <!-- End project-layout-split -->
+                    </div> <!-- End project-card -->                </div> <!-- End project-layout-split -->
             </div> <!-- End panel-platforms -->
         </div>
     </section>
@@ -423,8 +398,8 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="email">Correo corporativo <span class="required">*</span></label>
-                            <input type="email" id="email" name="email" placeholder="Ej. contacto@empresa.com" required>
+                            <label for="email">Correo electrónico</label>
+                            <input type="email" id="email" name="email" placeholder="Ej. nombre@correo.com">
                         </div>
                         <div class="form-group">
                             <label for="servicio">Tipo de servicio <span class="required">*</span></label>
@@ -456,52 +431,6 @@
     </section>
 
 
-    <!-- ======================== TRUSTED BY SECTION ======================== -->
-    <section class="trusted-by" id="clientes">
-        <div class="container">
-            <div class="trusted-header animate-on-scroll fade-up">
-                <p class="trusted-subtitle">Empresas que confían en mi trabajo</p>
-            </div>
-            
-            <div class="carousel-container animate-on-scroll fade-up">
-                <div class="carousel-track">
-                    <!-- Original logos -->
-                    <div class="carousel-slide">
-                        <img src="assets/LOGO APM.jpg" alt="APM Group" class="carousel-logo">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="assets/LOGO APM.jpg" alt="APM Group" class="carousel-logo">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="assets/LOGO APM.jpg" alt="APM Group" class="carousel-logo">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="assets/LOGO APM.jpg" alt="APM Group" class="carousel-logo">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="assets/LOGO APM.jpg" alt="APM Group" class="carousel-logo">
-                    </div>
-                    
-                    <!-- Duplicated logos for infinite scroll effect -->
-                    <div class="carousel-slide">
-                        <img src="assets/LOGO APM.jpg" alt="APM Group" class="carousel-logo">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="assets/LOGO APM.jpg" alt="APM Group" class="carousel-logo">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="assets/LOGO APM.jpg" alt="APM Group" class="carousel-logo">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="assets/LOGO APM.jpg" alt="APM Group" class="carousel-logo">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="assets/LOGO APM.jpg" alt="APM Group" class="carousel-logo">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- ======================== FOOTER ======================== -->
     <footer class="footer">
