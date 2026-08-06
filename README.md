@@ -111,5 +111,3 @@ Están explicadas a fondo en `design-system/README.md`. En corto:
 - La tipografía **Poppins se carga desde Google Fonts**. Sin internet cae a la
   fuente del sistema y el diseño cambia bastante. Si hace falta que funcione
   offline, hay que descargarla a `assets/`.
-- Los archivos `.py` de la raíz (`fix_html.py`, `cleanup.py`, etc.) son de la
-  versión anterior y **ya no sirven**: apuntan a un HTML que ya no existe.

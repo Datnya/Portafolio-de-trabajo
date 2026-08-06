@@ -69,8 +69,8 @@ y carril horizontal en lugar de las tres pestañas.
 servicios con marco 16:9 y conmutador; tres métricas en vez de cuatro; contacto
 de un solo canal con formulario plegado; nav flotante que se pliega al bajar.
 
-`styles.css` y `script.js` del sitio anterior salieron del árbol; siguen en el
-historial. Los `.py` de la raíz son de esa versión y ya no sirven.
+`styles.css`, `script.js` y los trece scripts `.py` del sitio anterior salieron
+del árbol. Siguen en el historial: `git show 9b1c4d6:fix_html.py`.
 
 Mapa completo en `arquitectura.md`.
 
