@@ -42,8 +42,35 @@ Contrato fijo, en este orden: portada 16:9 · cliente · sector · una línea de
 resultado con la cifra en naranja · dos o tres etiquetas. Nada más. La variedad
 vive dentro del caso, nunca en la rejilla.
 
-## Decisión abierta
+## Firma — decidido
 
-El sitio enlaza dos identidades: LinkedIn personal (`datnya-monzón`) e Instagram
-de estudio (`foxystudio.digital`). Está sin resolver cuál firma el portafolio.
-No asumas ninguna de las dos al generar el héroe.
+El portafolio lo firma **Datnya Monzón como persona**. Foxy Studio no aparece en
+el sitio: el enlace de Instagram (`foxystudio.digital`) ya se eliminó del nav.
+La voz es en primera persona del singular.
+
+## Estado
+
+Rama `YAMIL`, dos commits por encima de `main`.
+
+**Fase 1 (saneo) — hecha.** Carrusel de un logo repetido, seis placeholders y
+Foxy Studio eliminados. Assets de 28 MB a 852 KB (GIF→MP4, retrato→WebP con
+alpha). `alt` descriptivos escritos leyendo un fotograma real de cada vídeo.
+Correo del formulario ya no es obligatorio ni «corporativo». Medida de lectura
+corregida en los dos elementos que se pasaban. 23 reglas CSS huérfanas fuera.
+
+**Fase 2 (estructura) — pendiente.** `proyectos.json` para que subir un trabajo
+sea añadir un objeto y no copiar 80 líneas de HTML; rejilla con filtros en lugar
+de las tres pestañas actuales; `styles.css` consumiendo `tokens.css`.
+
+**Fase 3 (composición) — pendiente.** Héroe con el retrato anclado sobre una
+interfaz real desenfocada; franja de servicios; antes/después de APM; tres
+métricas de cliente en lugar de las cuatro actuales; contacto de un solo canal.
+
+Orden de trabajo: la tarjeta de trabajo primero, porque define el lenguaje
+visual de toda la rejilla. El héroe después.
+
+## Pendiente del cliente
+
+Las cifras de resultado no existen. Hoy el sitio dice «Imagen mucho más
+profesional», que no es un número. La tarjeta las exige y son su corazón: hay
+que pedírselas a Datnya antes de publicar.
