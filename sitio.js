@@ -173,6 +173,45 @@
     [media, cuerpo].forEach(function (el) { el.style.animation = 'none'; void el.offsetWidth; el.style.animation = ''; });
   }
 
+
+  /* ---------- nav plegable ----------
+     Se pliega al bajar y se despliega al subir o al pulsarlo. La anchura
+     desplegada se mide, porque width:auto no es animable. */
+  var navEl = $('#nav'), plegado = false, yPrevio = 0, yAlPlegar = 0, anchoAbierto = 0;
+  var BAJAR_PARA_PLEGAR = 150, SUBIR_PARA_ABRIR = 80;
+
+  function mideNav() {
+    if (!navEl) return;
+    var era = navEl.classList.contains('mini');
+    navEl.classList.remove('mini');
+    navEl.style.width = 'auto';
+    anchoAbierto = Math.ceil(navEl.getBoundingClientRect().width);
+    navEl.style.width = anchoAbierto + 'px';
+    if (era) navEl.classList.add('mini');
+  }
+
+  function pliega(v) {
+    if (!navEl || v === plegado) return;
+    plegado = v;
+    navEl.classList.toggle('mini', v);
+    var b = navEl.querySelector('.nav-mini');
+    if (b) b.setAttribute('aria-expanded', String(!v));
+  }
+
+  function revisaNav() {
+    if (!navEl) return;
+    var y = window.pageYOffset;
+    if (!plegado && y > yPrevio && y > BAJAR_PARA_PLEGAR) { pliega(true); yAlPlegar = y; }
+    else if (plegado) {
+      /* Se sigue el punto MÁS profundo alcanzado; si no, tras bajar mucho habría
+         que volver casi al punto de plegado para recuperar el nav. */
+      if (y > yAlPlegar) yAlPlegar = y;
+      else if (yAlPlegar - y > SUBIR_PARA_ABRIR) pliega(false);
+    }
+    if (y <= BAJAR_PARA_PLEGAR) pliega(false);
+    yPrevio = y;
+  }
+
   /* ---------- carril ---------- */
   function revisaRail() {
     var g = $('#rejilla'), r = $('.rail'); if (!g || !r) return;
@@ -213,6 +252,7 @@
   /* ---------- eventos ---------- */
   document.addEventListener('click', function (e) {
     var t;
+    if (plegado && e.target.closest('#nav')) { e.preventDefault(); pliega(false); yAlPlegar = 0; return; }
     if ((t = e.target.closest('.card'))) {
       e.preventDefault(); activo = t.dataset.id; pintaRejilla(); pintaCaso();
       var el = $('#caso');
@@ -251,13 +291,15 @@
   });
 
   var ult = 0;
-  function alScroll() { var n = performance.now(); if (n - ult < 50) return; ult = n; marcaNav(); }
+  function alScroll() { var n = performance.now(); if (n - ult < 50) return; ult = n; marcaNav(); revisaNav(); }
   window.addEventListener('scroll', alScroll, { passive: true });
-  window.addEventListener('resize', function () { marcaNav(); revisaRail(); }, { passive: true });
+  window.addEventListener('resize', function () { mideNav(); marcaNav(); revisaRail(); }, { passive: true });
+  var yTic = -1;
+  setInterval(function () { if (window.pageYOffset !== yTic) { yTic = window.pageYOffset; marcaNav(); revisaNav(); } }, 140);
   var rj = $('#rejilla'); if (rj) rj.addEventListener('scroll', revisaRail, { passive: true });
 
   /* ---------- arranque ---------- */
-  pintaRejilla(); pintaCaso(); pintaServicio(); marcaNav();
+  pintaRejilla(); pintaCaso(); pintaServicio(); mideNav(); marcaNav();
   document.documentElement.classList.add('anim');
   reveal();
   [200, 800].forEach(function (d) { setTimeout(function () { reveal(); revisaRail(); marcaNav(); }, d); });
