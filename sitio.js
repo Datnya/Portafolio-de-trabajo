@@ -5,7 +5,7 @@
 
   var PROYECTOS = [
     {
-      id: 'web', cliente: 'APM Group', sector: 'Consultoría en normas ISO',
+      id: 'web', cat: 'web', cliente: 'APM Group', sector: 'Consultoría en normas ISO',
       titulo: 'Modernización y automatización de una web corporativa',
       resultado: 'Webinars y auditorías que antes se actualizaban a mano, ahora solos.',
       portada: 'assets/apm-portada.mp4',
@@ -23,24 +23,39 @@
       ]
     },
     {
-      id: 'software', cliente: 'Estacionamiento', sector: 'Movilidad urbana',
+      id: 'software', cat: 'software', cliente: 'Estacionamiento', sector: 'Movilidad urbana',
       titulo: 'Sistema de gestión para estacionamiento',
       resultado: 'El registro en papel pasó a ser digital, con tickets y reportes automáticos.',
-      portada: '', alt: '', logo: '', tags: ['Software'],
+      portada: 'assets/GIF estacionamiento pc.gif', alt: 'Demo del sistema de estacionamiento', logo: '', tags: ['Software'],
       reto: 'El estacionamiento registraba manualmente el ingreso y salida de vehículos, lo que ocasionaba pérdida de información y dificultaba el control de los ingresos.',
       solucion: 'Desarrollé una aplicación personalizada para digitalizar todo el proceso de atención, desde el registro de vehículos hasta el control de pagos y reportes.',
       resultados: ['Registro digital de vehículos', 'Tickets automáticos', 'Control de ingresos en tiempo real'],
+      evidencia: [
+        { src: 'assets/GIF estacionamiento pc.gif', cap: 'Adaptado para PC y dispositivos móviles', alt: 'Vista del sistema en computadora', horizontal: true },
+        { src: 'assets/GIF estacionamiento 1.gif', cap: 'Registro de ingreso', alt: 'Muestra del proceso de registro de vehículos' },
+        { src: 'assets/GIF estacionamiento 2.gif', cap: 'Gestión de tickets', alt: 'Muestra de la generación y gestión de tickets' },
+        { src: 'assets/GIF estacionamiento 3.gif', cap: 'Reportes y control', alt: 'Visualización de reportes de ingresos' }
+      ]
+    },
+    {
+      id: 'lavanderia', cat: 'software', cliente: 'Lavandería', sector: 'Servicios de lavado',
+      titulo: 'Sistema de gestión para lavandería',
+      resultado: 'El cuaderno y los papeles fueron reemplazados por un sistema digital que agilizó toda la operación.',
+      portada: '', alt: '', logo: '', tags: ['Software'],
+      reto: 'La lavandería registraba todo a mano en un cuaderno: clientes, horarios, peso de la ropa, pagos. Esto consumía demasiado tiempo y generaba acumulación de papeles todos los días, con riesgo constante de perder información.',
+      solucion: 'Analicé el flujo de trabajo completo y desarrollé un software accesible desde PC y celular que permite registrar clientes, controlar ventas, dar seguimiento a pedidos en proceso y completados, generar tickets digitales (boletas de venta) y llevar un control detallado de los ingresos.',
+      resultados: ['Registro digital de clientes y pedidos', 'Control de ventas e ingresos en tiempo real', 'Tickets digitales (boleta de venta)', 'Seguimiento de pedidos en proceso y realizados', 'Ahorro significativo de tiempo operativo'],
       evidencia: []
     },
     {
-      id: 'platforms', cliente: 'Consultora', sector: 'Servicios profesionales',
+      id: 'platforms', cat: 'platforms', cliente: 'Consultora', sector: 'Servicios profesionales',
       titulo: 'Plataforma de gestión para consultoras',
       resultado: 'Clientes, proyectos y consultores centralizados en un solo lugar.',
       portada: '', alt: '', logo: '', tags: ['Plataforma', 'Gestión'],
       reto: 'La empresa gestionaba múltiples proyectos y consultores desde diferentes ubicaciones, lo que dificultaba conocer el avance real de cada servicio y centralizar toda la información.',
       solucion: 'Desarrollé una plataforma web totalmente personalizada para gestionar clientes, proyectos, consultores y el seguimiento de cada servicio desde un solo lugar y accesible desde cualquier dispositivo.',
       resultados: ['Control centralizado de todos los proyectos', 'Seguimiento en tiempo real'],
-      evidencia: []
+      evidencia: [], demoBtn: true
     }
   ];
 
@@ -55,11 +70,18 @@
   function pintaRejilla() {
     var g = $('#rejilla'); if (!g) return;
     g.innerHTML = PROYECTOS
-      .filter(function (p) { return filtro === 'todos' || p.id === filtro; })
+      .filter(function (p) { return filtro === 'todos' || p.cat === filtro; })
       .map(function (p) {
-        var portada = p.portada
-          ? '<video src="' + p.portada + '" autoplay muted loop playsinline preload="metadata" aria-label="' + esc(p.alt) + '"></video>'
-          : '<div class="ph"><span>captura pendiente</span></div>';
+        var portada = '';
+        if (p.portada) {
+          if (p.portada.endsWith('.mp4')) {
+            portada = '<video src="' + p.portada + '" autoplay muted loop playsinline preload="metadata" aria-label="' + esc(p.alt) + '"></video>';
+          } else {
+            portada = '<img src="' + p.portada + '" alt="' + esc(p.alt) + '" />';
+          }
+        } else {
+          portada = '<div class="ph"><span>captura pendiente</span></div>';
+        }
         return '<a class="card' + (p.id === activo ? ' on' : '') + '" href="#caso" data-id="' + p.id + '">' +
           '<div class="card-cover">' + portada + '</div>' +
           '<p class="card-meta">' + esc(p.cliente) + ' · ' + esc(p.sector) + '</p>' +
@@ -73,29 +95,48 @@
     reveal();
   }
 
-  /* ---------- caso ---------- */
+  /* ---------- caso modal ---------- */
   function pintaCaso() {
     var c = PROYECTOS.filter(function (p) { return p.id === activo; })[0] || PROYECTOS[0];
     var ev = c.evidencia.length
-      ? '<div class="ev">' + c.evidencia.map(function (e) {
-          return '<figure><video src="' + e.src + '" autoplay muted loop playsinline preload="metadata" aria-label="' + esc(e.alt) + '"></video>' +
-                 '<figcaption>' + esc(e.cap) + '</figcaption></figure>';
+      ? '<div class="ev" style="grid-template-columns: 1fr; margin-top:0;">' + c.evidencia.map(function (e) {
+          var isHoriz = e.horizontal;
+          var style = isHoriz ? ' style="aspect-ratio:16/9;object-fit:cover;max-height:none;height:auto;"' : '';
+          var media = e.src.endsWith('.mp4') 
+            ? '<video class="media-zoom" src="' + e.src + '" autoplay muted loop playsinline preload="metadata" aria-label="' + esc(e.alt) + '"' + style + '></video>'
+            : '<img class="media-zoom" src="' + e.src + '" alt="' + esc(e.alt) + '"' + style + ' />';
+          return '<figure>' + media + '<figcaption>' + esc(e.cap) + '</figcaption></figure>';
         }).join('') + '</div>'
-      : '<div class="ev-none"><span>capturas de este proyecto · pendientes</span></div>';
+      : '<div class="ev-none" style="margin-top:0;"><span>capturas de este proyecto · pendientes</span></div>';
     $('#casoCuerpo').innerHTML =
-      '<div class="case-top">' + (c.logo ? '<img src="' + c.logo + '" alt="' + esc(c.cliente) + '" />' : '') +
-        '<p class="eyebrow">' + esc(c.cliente) + ' · ' + esc(c.sector) + '</p></div>' +
-      '<h3 class="case-h">' + esc(c.titulo) + '</h3>' +
-      '<div class="case-grid">' +
-        '<div class="box"><h4>El reto</h4><p>' + esc(c.reto) + '</p></div>' +
-        '<div class="box"><h4>La solución</h4><p>' + esc(c.solucion) + '</p></div>' +
-      '</div>' +
-      '<div class="res"><h4 class="eyebrow">El resultado</h4><div class="res-list">' +
-        c.resultados.map(function (t) { return '<p class="res-item"><i>→</i>' + esc(t) + '</p>'; }).join('') +
-      '</div></div>' + ev;
-    var caso = $('#caso');
-    caso.classList.remove('swap'); void caso.offsetWidth; caso.classList.add('swap');
-    reveal();
+      '<div class="case-layout">' +
+        '<div class="case-left">' +
+          '<div class="case-top">' + (c.logo ? '<img src="' + c.logo + '" alt="' + esc(c.cliente) + '" />' : '') +
+            '<p class="eyebrow">' + esc(c.cliente) + ' · ' + esc(c.sector) + '</p></div>' +
+          '<h3 class="case-h" style="max-width:none;">' + esc(c.titulo) + '</h3>' +
+          '<div class="box"><h4>El reto</h4><p>' + esc(c.reto) + '</p></div>' +
+          '<div class="box"><h4>La solución</h4><p>' + esc(c.solucion) + '</p></div>' +
+          '<div class="res" style="margin-top:0;"><h4 class="eyebrow">El resultado</h4><div class="res-list">' +
+            c.resultados.map(function (t) { return '<p class="res-item"><i>→</i>' + esc(t) + '</p>'; }).join('') +
+          '</div></div>' +
+          (c.demoBtn ? '<a href="#demo" class="btn-demo" onclick="document.getElementById(\'casoClose\').click()">Ver video demostrativo de la plataforma</a>' : '') +
+        '</div>' +
+        '<div class="case-right">' + ev + '</div>' +
+      '</div>';
+    
+    var modal = $('#casoModal');
+    if (modal) {
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function cerrarCaso() {
+    var modal = $('#casoModal');
+    if (modal) {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
   }
 
 
@@ -120,7 +161,7 @@
       id: 'software', pill: 'Software adaptado', eyebrow: 'Software adaptado',
       titulo: 'El proceso ya existe',
       desc: 'No te pido cambiar cómo trabajas: construyo el sistema alrededor de tu proceso y digitalizo justo donde hoy se pierde la información.',
-      media: '', tag: 'Estacionamiento · Movilidad',
+      media: 'assets/GIF estacionamiento pc.gif', tag: 'Estacionamiento · Movilidad',
       incluye: [
         ['Registro digital', 'se acabó el papel'],
         ['Documentos automáticos', 'tickets y comprobantes'],
@@ -138,7 +179,7 @@
         ['Seguimiento en vivo', 'avance de cada servicio'],
         ['Acceso multiusuario', 'desde cualquier dispositivo']
       ],
-      caso: 'platforms', casoLabel: 'Ver el caso de la consultora'
+      caso: 'platforms', casoLabel: 'Ver el caso de la consultora', demoBtn: true
     }
   ];
 
@@ -151,7 +192,9 @@
 
     media.className = 'svc-media ' + (v.media ? 'con-video' : 'sin-video');
     media.innerHTML = v.media
-      ? '<video src="' + v.media + '" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>'
+      ? (v.media.endsWith('.mp4') 
+          ? '<video class="media-zoom" src="' + v.media + '" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>'
+          : '<img class="media-zoom" src="' + v.media + '" aria-hidden="true" />')
       : '<p class="svc-word">' + esc(v.titulo) + '</p>';
     tag.textContent = v.tag;
 
@@ -162,7 +205,10 @@
       '<ul class="svc-list">' + v.incluye.map(function (i) {
         return '<li><b>' + esc(i[0]) + '</b><em>' + esc(i[1]) + '</em></li>';
       }).join('') + '</ul>' +
-      '<a class="svc-prueba" href="#caso" data-caso="' + v.caso + '">' + esc(v.casoLabel) + ' →</a>';
+      '<div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;margin-top:2rem">' +
+        '<a class="svc-prueba" style="margin-top:0" href="#caso" data-caso="' + v.caso + '">' + esc(v.casoLabel) + ' →</a>' +
+        (v.demoBtn ? '<a class="btn-demo" style="margin-top:0" href="#demo">Ver video demostrativo de la plataforma</a>' : '') +
+      '</div>';
 
     sw.innerHTML = SERVICIOS.map(function (x) {
       return '<button type="button" role="tab" class="svc-pill' + (x.id === svcActivo ? ' on' : '') +
@@ -231,7 +277,7 @@
         es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); } });
       }, { threshold: 0.08, rootMargin: '0px 0px -5% 0px' });
     }
-    $$('.svc-body,.card,.stats-grid>div,.ct-card,.head,.fbox,.box,.res,.ev figure').forEach(function (el) {
+    $$('.svc-body,.card,.stats-grid>div,.ct-card,.head,.fbox,.box,.res,.ev figure,.met-grid,.demo-layout,.met-card').forEach(function (el) {
       if (!el.classList.contains('rv')) { el.classList.add('rv'); io.observe(el); }
     });
   }
@@ -255,8 +301,6 @@
     if (plegado && e.target.closest('#nav')) { e.preventDefault(); pliega(false); yAlPlegar = 0; return; }
     if ((t = e.target.closest('.card'))) {
       e.preventDefault(); activo = t.dataset.id; pintaRejilla(); pintaCaso();
-      var el = $('#caso');
-      window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 16, behavior: reduce ? 'auto' : 'smooth' });
       return;
     }
     if ((t = e.target.closest('.filter'))) {
@@ -278,8 +322,6 @@
       activo = t.dataset.caso; filtro = 'todos';
       $$('.filter').forEach(function (b) { b.classList.toggle('on', b.dataset.f === 'todos'); });
       pintaRejilla(); pintaCaso();
-      var d = $('#caso');
-      window.scrollTo({ top: d.getBoundingClientRect().top + window.pageYOffset - 16, behavior: reduce ? 'auto' : 'smooth' });
       return;
     }
     if ((t = e.target.closest('.rail-btn'))) {
@@ -287,6 +329,39 @@
       var paso = (c ? c.getBoundingClientRect().width : 300) + 28;
       g.scrollBy({ left: paso * (+t.dataset.dir), behavior: reduce ? 'auto' : 'smooth' });
       setTimeout(revisaRail, 420); return;
+    }
+    
+    /* Cerrar modal de caso */
+    if (e.target.closest('#casoClose') || e.target === $('#casoModal')) {
+      cerrarCaso();
+      return;
+    }
+
+    /* Abrir Lightbox */
+    var imgZoom = e.target.closest('.media-zoom') || (e.target.tagName === 'IMG' && e.target.closest('.card-cover, .hero-photo')) || (e.target.tagName === 'VIDEO' && e.target.closest('.card-cover, .hero-photo'));
+    if (imgZoom) {
+      e.preventDefault();
+      var lb = $('#lightbox');
+      var lbC = $('#lightboxContent');
+      if (lb && lbC) {
+        if (imgZoom.tagName === 'VIDEO') {
+          lbC.innerHTML = '<video src="' + imgZoom.getAttribute('src') + '" autoplay muted loop playsinline></video>';
+        } else {
+          lbC.innerHTML = '<img src="' + imgZoom.getAttribute('src') + '" />';
+        }
+        lb.classList.add('open');
+      }
+      return;
+    }
+
+    /* Cerrar Lightbox */
+    var lb = $('#lightbox');
+    if (lb && lb.classList.contains('open')) {
+      if (e.target.closest('.lightbox-close') || e.target === lb) {
+        lb.classList.remove('open');
+        $('#lightboxContent').innerHTML = '';
+      }
+      return;
     }
   });
 
@@ -299,7 +374,7 @@
   var rj = $('#rejilla'); if (rj) rj.addEventListener('scroll', revisaRail, { passive: true });
 
   /* ---------- arranque ---------- */
-  pintaRejilla(); pintaCaso(); pintaServicio(); mideNav(); marcaNav();
+  pintaRejilla(); pintaServicio(); mideNav(); marcaNav();
   document.documentElement.classList.add('anim');
   reveal();
   [200, 800].forEach(function (d) { setTimeout(function () { reveal(); revisaRail(); marcaNav(); }, d); });

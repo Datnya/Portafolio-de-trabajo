@@ -49,7 +49,7 @@
         <h1 class="hero-name">Datnya Monzón</h1>
         <div class="hero-rule"></div>
         <p class="hero-desc">Me dedico al <strong>desarrollo de software</strong>, <strong>páginas web</strong> y <strong>soluciones digitales personalizadas</strong>. Me gusta crear herramientas que realmente se adapten a las necesidades de cada persona o empresa.</p>
-        <a href="#caso" class="cta">Ver el caso APM Group
+        <a href="#servicios" class="cta">Ver portafolio de servicios
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
@@ -58,7 +58,7 @@
       <div class="stats-grid">
         <div><div class="stat-n">35</div><p class="stat-l">Proyectos completados</p></div>
         <div><div class="stat-n">28</div><p class="stat-l">Clientes atendidos</p></div>
-        <div><div class="stat-n">5</div><p class="stat-l">Años de experiencia</p></div>
+        <div><div class="stat-n">3</div><p class="stat-l">Años de experiencia</p></div>
       </div>
     </div>
   </div>
@@ -66,7 +66,10 @@
 
 <section class="band sec" id="servicios">
   <div class="wrap">
-    <p class="eyebrow">Servicios</p>
+    <div class="svc-head">
+      <p class="eyebrow" style="margin-bottom:0">Servicios</p>
+      <div class="svc-switch" id="svcSwitch" role="tablist" aria-label="Servicios"></div>
+    </div>
     <div class="svc">
       <div class="svc-stage">
         <span class="svc-ring" aria-hidden="true"></span>
@@ -75,7 +78,6 @@
       </div>
       <div class="svc-body" id="svcBody"></div>
     </div>
-    <div class="svc-switch" id="svcSwitch" role="tablist" aria-label="Servicios"></div>
   </div>
 </section>
 
@@ -105,13 +107,74 @@
     </div>
   </div>
 
-  <div id="caso" class="case sec"><div class="wrap" id="casoCuerpo"></div></div>
+  <div id="casoModal" class="modal-overlay" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" id="casoClose" aria-label="Cerrar">&times;</button>
+      <div id="casoCuerpo" class="modal-body"></div>
+    </div>
+  </div>
+</section>
+
+<section id="metodologia" class="sec dark">
+  <div class="wrap">
+    <p class="eyebrow">Proceso</p>
+    <h2>Metodología de trabajo</h2>
+    <div class="met-grid">
+      <div class="met-card">
+        <div class="met-num">01</div>
+        <h4>Conversamos</h4>
+        <p>Entendemos tu negocio y lo que necesitas.</p>
+      </div>
+      <div class="met-card">
+        <div class="met-num">02</div>
+        <h4>Analizamos</h4>
+        <p>Identificamos el problema y planteamos la mejor solución.</p>
+      </div>
+      <div class="met-card">
+        <div class="met-num">03</div>
+        <h4>Diseñamos</h4>
+        <p>Construimos la propuesta visual y estratégica.</p>
+      </div>
+      <div class="met-card">
+        <div class="met-num">04</div>
+        <h4>Desarrollamos</h4>
+        <p>Convertimos la idea en una solución funcional.</p>
+      </div>
+      <div class="met-card">
+        <div class="met-num">05</div>
+        <h4>Entregamos</h4>
+        <p>Probamos, ajustamos y dejamos todo listo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="demo" class="sec light">
+  <div class="wrap">
+    <div class="demo-layout">
+      <div class="demo-text">
+        <p class="eyebrow" style="color:var(--meta-700)">Demostración en video</p>
+        <h2>Automatización integral de APM Group</h2>
+        <p class="lede">Una mirada técnica a la plataforma digital desarrollada.</p>
+        <ul class="svc-list demo-list">
+          <li><b>CRM y Gestión de clientes</b><em>Seguimiento centralizado</em></li>
+          <li><b>Calendario personalizado</b><em>Coordinación de citas</em></li>
+          <li><b>Automatizaciones de procesos</b><em>Menos tareas manuales</em></li>
+        </ul>
+      </div>
+      <div class="demo-video">
+        <div class="demo-ph">
+          <span>próximamente...</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section id="contacto" class="sec">
   <div class="wrap">
     <p class="eyebrow">Contacto</p>
-    <h2 class="case-h" style="font-size:clamp(2rem,4vw,3rem);margin-top:.4rem">¿Tienes un proyecto en mente?</h2>
+    <h2 class="case-h" style="font-size:clamp(2rem,4vw,3rem);margin-top:.4rem">¿Tienes un <span style="color:var(--delta)">proyecto</span> en mente?</h2>
     <div class="ct">
       <div>
         <p class="lede" style="margin-bottom:1.8rem">Escríbeme por WhatsApp y lo hablamos. Es el camino más corto: sin formularios ni esperas.</p>
@@ -132,10 +195,16 @@
             <span class="ct-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.4 20.4h-3.5v-5.5c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9v5.6H9.4V9h3.4v1.6h.04c.5-.9 1.6-1.9 3.4-1.9 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.06 2.06 0 1 1 0-4.1 2.06 2.06 0 0 1 0 4.1zm1.8 13H3.6V9h3.5v11.4zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.5C0 23.2.8 24 1.8 24h20.4c1 0 1.8-.8 1.8-1.8V1.7C24 .8 23.2 0 22.2 0z"/></svg></span>
             <span><span class="ct-k">LinkedIn</span><br /><span class="ct-v">@datnyamonzon</span></span>
           </a>
+          <a href="https://www.instagram.com/foxystudio.digital/" target="_blank" rel="noopener noreferrer" class="ct-card">
+            <span class="ct-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></span>
+            <span><span class="ct-k">Instagram</span><br /><span class="ct-v">@foxystudio.digital</span></span>
+          </a>
         </div>
       </div>
-      <details class="fbox">
-        <summary>Prefiero llenar un formulario</summary>
+      
+      <div class="ct-right-col">
+        <details class="fbox">
+          <summary>Prefiero llenar un formulario</summary>
         <div class="fbody">
           <p>Cuéntame tu proyecto y te respondo con una propuesta.</p>
           <div class="row2">
@@ -144,12 +213,26 @@
           </div>
           <div class="field"><label for="e">Correo</label><input id="e" type="email" placeholder="nombre@correo.com" /></div>
           <div class="field"><label for="sv">Servicio</label>
-            <select id="sv"><option>Página web</option><option>Software adaptado</option><option>Plataforma digital</option></select>
+            <select id="sv"><option>Página web</option><option>Software adaptado</option><option>Plataforma digital</option><option>Otro</option></select>
           </div>
           <div class="field"><label for="c">Comentarios</label><textarea id="c" rows="3" placeholder="Cuéntame brevemente sobre tu proyecto"></textarea></div>
           <button class="btn2 send" type="button">Enviar</button>
         </div>
       </details>
+      <div class="ct-cta">
+        <div class="ct-cta-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path><path d="M12 12 21.1 2.9"></path><path d="M12 12v10"></path></svg>
+        </div>
+        <div class="ct-cta-body">
+          <h3>¿Quieres estar al tanto de las novedades sobre IA o actualidad?</h3>
+          <p>Sígueme en Instagram donde subo contenido informativo y muestro procesos de trabajo en Foxystudio Digital.</p>
+          <a href="https://www.instagram.com/foxystudio.digital/" target="_blank" rel="noopener noreferrer" class="cta-small">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            Seguir a foxystudio.digital
+          </a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -162,9 +245,14 @@
         <a href="#inicio">Inicio</a><a href="#trabajo">Trabajo</a><a href="#contacto">Contacto</a>
       </div>
     </div>
-    <div class="ft-bot"><p>&copy; 2025 Datnya Monzón. Todos los derechos reservados.</p></div>
+    <div class="ft-bot"><p>Portafolio digital 2026</p></div>
   </div>
 </footer>
+
+<div id="lightbox" class="lightbox-overlay" aria-hidden="true">
+  <button class="lightbox-close" aria-label="Cerrar">&times;</button>
+  <div class="lightbox-content" id="lightboxContent"></div>
+</div>
 
 <script src="sitio.js?v=2"></script>
 </body>
