@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&amp;display=swap');
+    .text {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 55px;
+      fill: #1a1a1a;
+      text-anchor: middle;
+      dominant-baseline: central;
+    }
+  </style>
+  <text x="50" y="55" class="text">DM</text>
+</svg>
