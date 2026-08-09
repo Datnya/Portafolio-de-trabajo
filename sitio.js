@@ -41,11 +41,15 @@
       id: 'lavanderia', cat: 'software', cliente: 'Lavandería', sector: 'Servicios de lavado',
       titulo: 'Sistema de gestión para lavandería',
       resultado: 'El cuaderno y los papeles fueron reemplazados por un sistema digital que agilizó toda la operación.',
-      portada: '', alt: '', logo: '', tags: ['Software'],
+      portada: 'assets/GIF lavanderia.gif', alt: 'Vista general del sistema de gestión para lavandería', logo: '', tags: ['Software'],
       reto: 'La lavandería registraba todo a mano en un cuaderno: clientes, horarios, peso de la ropa, pagos. Esto consumía demasiado tiempo y generaba acumulación de papeles todos los días, con riesgo constante de perder información.',
       solucion: 'Analicé el flujo de trabajo completo y desarrollé un software accesible desde PC y celular que permite registrar clientes, controlar ventas, dar seguimiento a pedidos en proceso y completados, generar tickets digitales (boletas de venta) y llevar un control detallado de los ingresos.',
       resultados: ['Registro digital de clientes y pedidos', 'Control de ventas e ingresos en tiempo real', 'Tickets digitales (boleta de venta)', 'Seguimiento de pedidos en proceso y realizados', 'Ahorro significativo de tiempo operativo'],
-      evidencia: []
+      evidencia: [
+        { src: 'assets/GIF lavanderia.gif', cap: 'Vista general del sistema', alt: 'Demostración del sistema de lavandería', horizontal: true },
+        { src: 'assets/GIF lavanderia 1.gif', cap: 'Registro y seguimiento de pedidos', alt: 'Muestra del registro y seguimiento de pedidos' },
+        { src: 'assets/GIF lavanderia 2.gif', cap: 'Control de ventas y tickets digitales', alt: 'Muestra del control de ventas y generación de tickets' }
+      ]
     },
     {
       id: 'platforms', cat: 'platforms', cliente: 'Consultora', sector: 'Servicios profesionales',
