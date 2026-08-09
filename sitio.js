@@ -51,11 +51,16 @@
       id: 'platforms', cat: 'platforms', cliente: 'Consultora', sector: 'Servicios profesionales',
       titulo: 'Plataforma de gestión para consultoras',
       resultado: 'Clientes, proyectos y consultores centralizados en un solo lugar.',
-      portada: '', alt: '', logo: '', tags: ['Plataforma', 'Gestión'],
+      portada: 'assets/GIF plataforma.gif', alt: 'Vista general de la plataforma de gestión para consultoras', logo: '', tags: ['Plataforma', 'Gestión'],
       reto: 'La empresa gestionaba múltiples proyectos y consultores desde diferentes ubicaciones, lo que dificultaba conocer el avance real de cada servicio y centralizar toda la información.',
       solucion: 'Desarrollé una plataforma web totalmente personalizada para gestionar clientes, proyectos, consultores y el seguimiento de cada servicio desde un solo lugar y accesible desde cualquier dispositivo.',
       resultados: ['Control centralizado de todos los proyectos', 'Seguimiento en tiempo real'],
-      evidencia: [], demoBtn: true
+      evidencia: [
+        { src: 'assets/GIF plataforma.gif', cap: 'Vista general de la plataforma', alt: 'Demostración general de la plataforma de gestión para consultoras', horizontal: true },
+        { src: 'assets/GIF plataforma 1.gif', cap: 'Gestión de clientes y proyectos', alt: 'Demostración de la gestión de clientes y proyectos en la plataforma' },
+        { src: 'assets/GIF plataforma 2.gif', cap: 'Seguimiento de servicios', alt: 'Demostración del seguimiento de servicios en la plataforma' },
+        { src: 'assets/GIF plataforma 3.gif', cap: 'Control y reportes', alt: 'Demostración del control y reportes en la plataforma' }
+      ], demoBtn: true
     }
   ];
 
@@ -173,7 +178,7 @@
       id: 'platforms', pill: 'Plataformas', eyebrow: 'Plataformas digitales',
       titulo: 'Todo en un solo lugar',
       desc: 'Clientes, proyectos y equipo dejan de vivir en hojas sueltas y cadenas de correo. Una plataforma a tu medida, abierta desde donde estés.',
-      media: '', tag: 'Consultora · Servicios profesionales',
+      media: 'assets/GIF plataforma.gif', tag: 'Consultora · Servicios profesionales',
       incluye: [
         ['Gestión centralizada', 'clientes y proyectos'],
         ['Seguimiento en vivo', 'avance de cada servicio'],
