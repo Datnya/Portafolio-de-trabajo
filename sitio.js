@@ -340,6 +340,70 @@
       setTimeout(revisaRail, 420); return;
     }
     
+    /* Enviar formulario de contacto */
+    if ((t = e.target.closest('.btn2.send'))) {
+      e.preventDefault();
+      var btnSend = t;
+      var nombre = $('#n').value.trim();
+      var telefono = $('#t') ? $('#t').value.trim() : '';
+      var correo = $('#e').value.trim();
+      var servicio = $('#sv') ? $('#sv').value : '';
+      var comentarios = $('#c') ? $('#c').value.trim() : '';
+
+      if (!nombre || !correo) {
+        alert("Por favor, ingresa tu nombre y correo para poder contactarte.");
+        return;
+      }
+
+      var originalText = btnSend.textContent;
+      btnSend.textContent = "Enviando...";
+      btnSend.disabled = true;
+      btnSend.style.opacity = '0.7';
+
+      fetch("https://formsubmit.co/ajax/datnyamonzon1@gmail.com", {
+        method: "POST",
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          Nombre: nombre,
+          Telefono: telefono,
+          Correo: correo,
+          Servicio: servicio,
+          Comentarios: comentarios,
+          _subject: "Nuevo contacto desde el portafolio",
+          _template: "table"
+        })
+      })
+      .then(function(response) { return response.json(); })
+      .then(function(data) {
+        if(data.success === "true" || data.success === true) {
+          var fbody = $('.fbody');
+          if (fbody) {
+            fbody.innerHTML = '<div class="success-msg rv">' +
+                              '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="success-icon"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>' +
+                              '<h3>¡Formulario enviado!</h3>' +
+                              '<p>Gracias por escribirme. Revisa tu bandeja de entrada o SPAM si es la primera vez que usas el formulario para confirmarlo.</p>' +
+                              '</div>';
+            setTimeout(function() { 
+              var sm = $('.success-msg');
+              if (sm) sm.classList.add('vis');
+            }, 50);
+          }
+        } else {
+          throw new Error("FormSubmit devolvió falso");
+        }
+      })
+      .catch(function(error) {
+        alert("Hubo un error al enviar el formulario. ¿Confirmaste tu correo electrónico de FormSubmit? Intenta nuevamente.");
+        btnSend.textContent = originalText;
+        btnSend.disabled = false;
+        btnSend.style.opacity = '1';
+      });
+      return;
+    }
+    
     /* Cerrar modal de caso */
     if (e.target.closest('#casoClose') || e.target === $('#casoModal')) {
       cerrarCaso();
