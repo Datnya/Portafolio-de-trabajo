@@ -185,7 +185,7 @@
           .svc-pill:hover{color:#fff;background:rgba(255,255,255,.05)}
           .svc-pill.on{background:#fff;color:var(--frame)}
           @media (prefers-reduced-motion:no-preference){
-            .svc-body,.svc-media{animation:sube .5s cubic-bezier(.16,1,.3,1) both}
+            .svc-body{animation:sube .5s cubic-bezier(.16,1,.3,1) both}
           }
           @media (max-width:900px){
             .svc{grid-template-columns:minmax(0,1fr);gap:2.5rem}

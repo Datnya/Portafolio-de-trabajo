@@ -225,7 +225,7 @@
     }).join('');
 
     /* reinicia la entrada para que el cambio se note */
-    [media, cuerpo].forEach(function (el) { el.style.animation = 'none'; void el.offsetWidth; el.style.animation = ''; });
+    cuerpo.style.animation = 'none'; void cuerpo.offsetWidth; cuerpo.style.animation = '';
   }
 
 
@@ -384,7 +384,7 @@
             fbody.innerHTML = '<div class="success-msg rv">' +
                               '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="success-icon"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>' +
                               '<h3>¡Formulario enviado!</h3>' +
-                              '<p>Gracias por escribirme. Revisa tu bandeja de entrada o SPAM si es la primera vez que usas el formulario para confirmarlo.</p>' +
+                              '<p>Gracias por escribirme, en breve te estaré enviando una propuesta a tu medida.</p>' +
                               '</div>';
             setTimeout(function() { 
               var sm = $('.success-msg');
