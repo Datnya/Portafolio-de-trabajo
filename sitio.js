@@ -20,7 +20,8 @@
         { src: 'assets/apm-portada.mp4', cap: 'Portada rediseñada', alt: 'Portada del nuevo sitio de APM Group con el titular sobre una fotografía de montaña' },
         { src: 'assets/apm-servicios.mp4', cap: 'Servicios, con acceso directo a cada línea', alt: 'Sección de servicios con tarjetas de Consultoría y Auditoría' },
         { src: 'assets/apm-equipo.mp4', cap: 'Equipo, con perfil al pasar el cursor', alt: 'Tarjetas del equipo que revelan el perfil de cada consultor al pasar el cursor' }
-      ]
+      ],
+      webLink: 'https://apm-landing.netlify.app'
     },
     {
       id: 'software', cat: 'software', cliente: 'Estacionamiento', sector: 'Movilidad urbana',
@@ -129,6 +130,7 @@
             c.resultados.map(function (t) { return '<p class="res-item"><i>→</i>' + esc(t) + '</p>'; }).join('') +
           '</div></div>' +
           (c.demoBtn ? '<a href="#demo" class="btn-demo" onclick="document.getElementById(\'casoClose\').click()">Ver video demostrativo de la plataforma</a>' : '') +
+          (c.webLink ? '<a href="' + c.webLink + '" target="_blank" rel="noopener noreferrer" class="btn-demo" style="background:var(--delta);color:#fff;margin-top:1rem">Ver página web →</a>' : '') +
         '</div>' +
         '<div class="case-right">' + ev + '</div>' +
       '</div>';
@@ -225,7 +227,11 @@
     }).join('');
 
     /* reinicia la entrada para que el cambio se note */
-    cuerpo.style.animation = 'none'; void cuerpo.offsetWidth; cuerpo.style.animation = '';
+    cuerpo.style.opacity = '0'; cuerpo.style.transform = 'translateY(12px)';
+    void cuerpo.offsetWidth;
+    cuerpo.style.transition = 'opacity .45s ease, transform .45s ease';
+    cuerpo.style.opacity = '1'; cuerpo.style.transform = 'none';
+    setTimeout(function(){ cuerpo.style.transition = ''; }, 500);
   }
 
 
