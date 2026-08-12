@@ -292,7 +292,7 @@
         es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); } });
       }, { threshold: 0.08, rootMargin: '0px 0px -5% 0px' });
     }
-    $$('.svc-body,.card,.stats-grid>div,.ct-card,.head,.fbox,.box,.res,.ev figure,.met-grid,.demo-layout,.met-card').forEach(function (el) {
+    $$('.svc-body,.card,.stats-grid>div,.ct-card,.head,.fbox,.box,.res,.ev figure,.met-grid,.demo-layout,.met-card,.test-container,.test-card').forEach(function (el) {
       if (!el.classList.contains('rv')) { el.classList.add('rv'); io.observe(el); }
     });
   }
@@ -452,9 +452,87 @@
   setInterval(function () { if (window.pageYOffset !== yTic) { yTic = window.pageYOffset; marcaNav(); revisaNav(); } }, 140);
   var rj = $('#rejilla'); if (rj) rj.addEventListener('scroll', revisaRail, { passive: true });
 
+  /* ---------- Supabase Reseñas ---------- */
+  const SUPABASE_URL = 'https://ovflbrrnqgmooutlukyf.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im92ZmxicnJucWdtb291dGx1a3lmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjgxMzk1NzUsImV4cCI6MjA4MzcxNTU3NX0.8Rd22mCnCigBpFCaKZmj2F2q2bwHdM9nutb1hUMqUKM';
+  const sb = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+  
+  let currentReviewPage = 0;
+  const REVIEWS_PER_PAGE = 3;
+
+  function timeAgo(dateString) {
+    const d = new Date(dateString);
+    const diff = (new Date() - d) / 1000;
+    if (diff < 60) return "hace unos segundos";
+    if (diff < 3600) return `hace ${Math.floor(diff/60)} minutos`;
+    if (diff < 86400) return `hace ${Math.floor(diff/3600)} horas`;
+    if (diff < 2592000) {
+      const days = Math.floor(diff/86400);
+      return days === 1 ? "hace 1 día" : `hace ${days} días`;
+    }
+    if (diff < 31536000) {
+      const months = Math.floor(diff/2592000);
+      return months === 1 ? "hace 1 mes" : `hace ${months} meses`;
+    }
+    const years = Math.floor(diff/31536000);
+    return years === 1 ? "hace 1 año" : `hace ${years} años`;
+  }
+
+  async function loadReviews() {
+    if (!sb) return;
+    const grid = $('#reviewsGrid');
+    if (!grid) return;
+    
+    const { data, error } = await sb
+      .from('reviews')
+      .select('*')
+      .order('created_at', { ascending: false })
+      .range(currentReviewPage * REVIEWS_PER_PAGE, (currentReviewPage + 1) * REVIEWS_PER_PAGE - 1);
+      
+    if (error || !data) return;
+    
+    data.forEach(r => {
+      const card = document.createElement('div');
+      card.className = 'test-card';
+      const starsStr = '★'.repeat(r.stars) + '☆'.repeat(5 - r.stars);
+      card.innerHTML = `
+        <div class="test-stars">${starsStr}</div>
+        <p class="test-text">"${r.text}"</p>
+        <div class="test-author">
+          <span class="test-name">${r.name}</span>
+          <span class="test-date">${timeAgo(r.created_at)}</span>
+        </div>
+      `;
+      grid.appendChild(card);
+      // Forzar animación
+      if (typeof io !== 'undefined') io.observe(card);
+      else card.classList.add('vis');
+    });
+    
+    const btnLoadMore = $('#btnLoadMoreReviews');
+    if (btnLoadMore) {
+      if (data.length < REVIEWS_PER_PAGE) {
+        btnLoadMore.style.display = 'none';
+      } else {
+        btnLoadMore.style.display = 'inline-block';
+      }
+    }
+    
+    currentReviewPage++;
+    reveal();
+  }
+
+  const btnLoadMore = $('#btnLoadMoreReviews');
+  if (btnLoadMore) {
+    btnLoadMore.addEventListener('click', loadReviews);
+  }
+
   /* ---------- arranque ---------- */
   pintaRejilla(); pintaServicio(); mideNav(); marcaNav();
   document.documentElement.classList.add('anim');
   reveal();
   [200, 800].forEach(function (d) { setTimeout(function () { reveal(); revisaRail(); marcaNav(); }, d); });
+  
+  // Cargar reseñas
+  loadReviews();
 })();

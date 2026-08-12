@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="stylesheet" href="estilos.css?v=2" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
@@ -167,6 +168,23 @@
         <div class="demo-ph">
           <span>próximamente...</span>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonios" class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="test-container">
+      <div class="test-header">
+        <h2>Experiencias de mis clientes</h2>
+        <p class="eyebrow" style="margin-top: 0.5rem; color: rgba(255,255,255,.62);">Lo que dicen de mi trabajo</p>
+      </div>
+      <div class="test-grid" id="reviewsGrid">
+        <!-- Las reseñas se cargarán aquí dinámicamente -->
+      </div>
+      <div style="text-align: center; margin-top: 3rem;">
+        <button type="button" class="btn2" id="btnLoadMoreReviews">Ver más reseñas</button>
       </div>
     </div>
   </div>

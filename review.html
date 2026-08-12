@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Déjanos tu reseña | Datnya Monzón</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="estilos.css?v=2" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    body { background-color: var(--frame); color: #fff; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
+    .review-box { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: clamp(2rem, 5vw, 3.5rem); width: 100%; max-width: 600px; box-sizing: border-box; }
+    .review-header { text-align: center; margin-bottom: 2.5rem; }
+    .review-header h1 { font-size: 2rem; margin-bottom: 0.5rem; line-height: 1.2; }
+    .review-header p { color: rgba(255,255,255,0.6); font-size: 0.95rem; }
+    
+    .stars-input { display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 2rem; flex-direction: row-reverse; }
+    .stars-input input { display: none; }
+    .stars-input label { cursor: pointer; color: rgba(255,255,255,0.2); transition: color 0.2s; }
+    .stars-input label svg { width: 40px; height: 40px; }
+    .stars-input input:checked ~ label,
+    .stars-input label:hover,
+    .stars-input label:hover ~ label { color: var(--delta); }
+
+    .field { margin-bottom: 1.5rem; }
+    .field label { display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; font-weight: 600; }
+    .field input, .field textarea { width: 100%; box-sizing: border-box; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 1rem; border-radius: 8px; font-family: inherit; font-size: 1rem; transition: border-color 0.2s; }
+    .field input:focus, .field textarea:focus { outline: none; border-color: var(--delta); }
+    
+    .btn-submit { width: 100%; background: var(--delta); color: var(--frame); border: none; padding: 1rem; font-weight: 700; font-size: 1rem; border-radius: 999px; cursor: pointer; transition: background 0.2s, transform 0.2s; margin-top: 1rem; }
+    .btn-submit:hover { background: #fff; transform: translateY(-2px); }
+    .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    
+    #successMessage { display: none; text-align: center; padding: 3rem 1rem; }
+    #successMessage svg { width: 64px; height: 64px; color: var(--delta); margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+
+<div class="review-box" id="reviewFormContainer">
+  <div class="review-header">
+    <h1>Escribe tu experiencia con mi servicio</h1>
+    <p>Tu opinión me ayuda a seguir mejorando.</p>
+  </div>
+  
+  <form id="reviewForm">
+    <!-- El sistema de estrellas va al revés (flex-direction: row-reverse) para el truco CSS de ~ label -->
+    <div class="stars-input">
+      <input type="radio" id="star5" name="stars" value="5" required />
+      <label for="star5" title="5 estrellas"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></label>
+      
+      <input type="radio" id="star4" name="stars" value="4" />
+      <label for="star4" title="4 estrellas"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></label>
+      
+      <input type="radio" id="star3" name="stars" value="3" />
+      <label for="star3" title="3 estrellas"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></label>
+      
+      <input type="radio" id="star2" name="stars" value="2" />
+      <label for="star2" title="2 estrellas"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></label>
+      
+      <input type="radio" id="star1" name="stars" value="1" />
+      <label for="star1" title="1 estrella"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></label>
+    </div>
+    
+    <div class="field">
+      <label for="rname">Nombre y Apellido</label>
+      <input type="text" id="rname" required placeholder="Ej. Juan Pérez" />
+    </div>
+    
+    <div class="field">
+      <label for="rtext">¿Qué opinas sobre el servicio brindado?</label>
+      <textarea id="rtext" required rows="4" placeholder="Escribe aquí tu experiencia..."></textarea>
+    </div>
+    
+    <button type="submit" class="btn-submit" id="btnSubmit">Publicar experiencia</button>
+  </form>
+</div>
+
+<div class="review-box" id="successMessage">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+  <h2>¡Muchísimas gracias!</h2>
+  <p style="color: rgba(255,255,255,0.7); margin-top: 1rem;">Tu experiencia ha sido publicada con éxito en mi portafolio.</p>
+</div>
+
+<script src="review.js"></script>
+</body>
+</html>
