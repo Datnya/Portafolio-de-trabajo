@@ -352,8 +352,12 @@
           .test-date{font-size:.75rem;color:rgba(255,255,255,0.5);margin-top:0.15rem}
           .btn-more-reviews{background:var(--delta);color:#fff;border:none;padding:.85rem 2rem;
                             font-weight:700;font-size:.95rem;border-radius:999px;cursor:pointer;
-                            transition:transform .2s,background .2s}
+                            transition:transform .2s,background .2s;text-decoration:none}
           .btn-more-reviews:hover{transform:translateY(-2px);background:#e08a00}
+          .btn-write-review{background:rgba(255,255,255,0.08);color:#fff;border:1px solid rgba(255,255,255,0.2);
+                            padding:.85rem 2rem;font-weight:700;font-size:.95rem;border-radius:999px;cursor:pointer;
+                            transition:transform .2s,background .2s,border-color .2s;text-decoration:none}
+          .btn-write-review:hover{transform:translateY(-2px);background:rgba(255,255,255,0.15);border-color:#fff}
           @media(max-width:768px){.test-grid{grid-template-columns:1fr}}
 
           .ct{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,5vw,4rem);
