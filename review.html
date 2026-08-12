@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Déjanos tu reseña | Datnya Monzón</title>
+  <title>Déjame tu reseña | Datnya Monzón</title>
   <meta name="robots" content="noindex, nofollow" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -31,9 +31,12 @@
     .field input, .field textarea { width: 100%; box-sizing: border-box; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 1rem; border-radius: 8px; font-family: inherit; font-size: 1rem; transition: border-color 0.2s; }
     .field input:focus, .field textarea:focus { outline: none; border-color: var(--delta); }
     
-    .btn-submit { width: 100%; background: var(--delta); color: var(--frame); border: none; padding: 1rem; font-weight: 700; font-size: 1rem; border-radius: 999px; cursor: pointer; transition: background 0.2s, transform 0.2s; margin-top: 1rem; }
-    .btn-submit:hover { background: #fff; transform: translateY(-2px); }
+    .btn-submit { width: 100%; background: var(--delta); color: #fff; border: none; padding: 1rem; font-weight: 800; font-size: 1.05rem; border-radius: 999px; cursor: pointer; transition: background 0.2s, transform 0.2s; margin-top: 1rem; letter-spacing: 0.02em; }
+    .btn-submit:hover { background: #e08a00; transform: translateY(-2px); }
     .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .consent { display: flex; align-items: flex-start; gap: 0.75rem; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+    .consent input[type="checkbox"] { width: 18px; height: 18px; flex: none; margin-top: 3px; accent-color: var(--delta); cursor: pointer; }
+    .consent label { font-size: 0.82rem; line-height: 1.5; color: rgba(255,255,255,0.7); cursor: pointer; }
     
     #successMessage { display: none; text-align: center; padding: 3rem 1rem; }
     #successMessage svg { width: 64px; height: 64px; color: var(--delta); margin-bottom: 1rem; }
@@ -74,6 +77,11 @@
     <div class="field">
       <label for="rtext">¿Qué opinas sobre el servicio brindado?</label>
       <textarea id="rtext" required rows="4" placeholder="Escribe aquí tu experiencia..."></textarea>
+    </div>
+    
+    <div class="consent">
+      <input type="checkbox" id="rconsent" required />
+      <label for="rconsent">Autorizo el uso de mi reseña como referencia en el portafolio profesional de Datnya Monzón.</label>
     </div>
     
     <button type="submit" class="btn-submit" id="btnSubmit">Publicar experiencia</button>
