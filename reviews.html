@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Todas las reseñas | Datnya Monzón</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="estilos.css?v=2" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    body { background: #fff; margin: 0; }
+    .reviews-page { max-width: 1400px; margin: 0 auto; padding: clamp(2rem,5vw,4rem) clamp(1.25rem,4vw,2.5rem); }
+    .reviews-page-header { text-align: center; margin-bottom: 3rem; }
+    .reviews-page-header h1 { font-size: clamp(2rem,4vw,3rem); color: var(--frame); margin-bottom: 0.5rem; }
+    .reviews-page-header p { color: var(--meta-700); font-size: 1rem; }
+    .reviews-page-header a { display: inline-block; margin-top: 1.5rem; color: var(--delta); text-decoration: none; font-weight: 600; font-size: .9rem; }
+    .reviews-page-header a:hover { text-decoration: underline; }
+    .all-reviews-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px,1fr)); gap: 1.5rem; }
+    .rv-card { background: var(--frame); border-radius: 16px; padding: 1.5rem; display: flex; flex-direction: column; color: #fff; }
+    .rv-stars { color: var(--delta); font-size: 1rem; margin-bottom: 1rem; letter-spacing: 0.1em; }
+    .rv-text { font-size: .9rem; line-height: 1.6; color: rgba(255,255,255,0.85); margin-bottom: 1.2rem; flex-grow: 1;
+               background: rgba(255,255,255,0.06); padding: 1.1rem; border-radius: 14px 14px 14px 0; position: relative; }
+    .rv-text::after { content: ""; position: absolute; bottom: -10px; left: 0;
+                      border-width: 10px 14px 0 0; border-style: solid;
+                      border-color: rgba(255,255,255,0.06) transparent transparent transparent; }
+    .rv-author { border-top: 1px solid rgba(255,255,255,0.1); padding-top: .8rem; }
+    .rv-name { font-weight: 600; color: #fff; font-size: .9rem; display: block; }
+    .rv-date { font-size: .75rem; color: rgba(255,255,255,0.5); margin-top: 0.15rem; display: block; }
+    .rv-loading { text-align: center; padding: 3rem; color: var(--meta-700); font-size: 1rem; }
+    .rv-empty { text-align: center; padding: 3rem; color: var(--meta-700); font-size: 1rem; }
+  </style>
+</head>
+<body>
+
+<div class="reviews-page">
+  <div class="reviews-page-header">
+    <h1>Todas las reseñas de Datnya</h1>
+    <p>Lo que dicen mis clientes sobre mi trabajo</p>
+    <a href="index.html">← Volver al portafolio</a>
+  </div>
+
+  <div class="all-reviews-grid" id="allReviewsGrid">
+    <div class="rv-loading" id="rvLoading">Cargando reseñas...</div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var SUPABASE_URL = 'https://ovflbrrnqgmooutlukyf.supabase.co';
+  var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im92ZmxicnJucWdtb291dGx1a3lmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjgxMzk1NzUsImV4cCI6MjA4MzcxNTU3NX0.8Rd22mCnCigBpFCaKZmj2F2q2bwHdM9nutb1hUMqUKM';
+
+  var sb = null;
+  try { sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY); } catch(e) {}
+
+  function timeAgo(dateString) {
+    var d = new Date(dateString);
+    var diff = (new Date() - d) / 1000;
+    if (diff < 60) return "hace unos segundos";
+    if (diff < 3600) return "hace " + Math.floor(diff/60) + " minutos";
+    if (diff < 86400) return "hace " + Math.floor(diff/3600) + " horas";
+    if (diff < 2592000) {
+      var days = Math.floor(diff/86400);
+      return days === 1 ? "hace 1 día" : "hace " + days + " días";
+    }
+    if (diff < 31536000) {
+      var months = Math.floor(diff/2592000);
+      return months === 1 ? "hace 1 mes" : "hace " + months + " meses";
+    }
+    var years = Math.floor(diff/31536000);
+    return years === 1 ? "hace 1 año" : "hace " + years + " años";
+  }
+
+  async function loadAll() {
+    if (!sb) return;
+    var grid = document.getElementById('allReviewsGrid');
+    var loading = document.getElementById('rvLoading');
+
+    var result = await sb.from('reviews').select('*').order('created_at', { ascending: false });
+
+    if (loading) loading.remove();
+
+    if (result.error || !result.data || result.data.length === 0) {
+      grid.innerHTML = '<div class="rv-empty">Aún no hay reseñas publicadas.</div>';
+      return;
+    }
+
+    result.data.forEach(function(r) {
+      var stars = '';
+      for (var i = 0; i < r.stars; i++) stars += '★';
+      for (var j = r.stars; j < 5; j++) stars += '☆';
+
+      var card = document.createElement('div');
+      card.className = 'rv-card';
+      card.innerHTML =
+        '<div class="rv-stars">' + stars + '</div>' +
+        '<p class="rv-text">"' + r.text + '"</p>' +
+        '<div class="rv-author">' +
+          '<span class="rv-name">' + r.name + '</span>' +
+          '<span class="rv-date">' + timeAgo(r.created_at) + '</span>' +
+        '</div>';
+      grid.appendChild(card);
+    });
+  }
+
+  loadAll();
+})();
+</script>
+
+</body>
+</html>

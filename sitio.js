@@ -480,51 +480,47 @@
 
   async function loadReviews() {
     if (!sb) return;
-    const grid = $('#reviewsGrid');
+    var grid = $('#reviewsGrid');
     if (!grid) return;
     
-    const { data, error } = await sb
+    // Obtener hasta 4 reseñas para saber si hay más de 3
+    var { data, error } = await sb
       .from('reviews')
       .select('*')
       .order('created_at', { ascending: false })
-      .range(currentReviewPage * REVIEWS_PER_PAGE, (currentReviewPage + 1) * REVIEWS_PER_PAGE - 1);
+      .limit(4);
       
     if (error || !data) return;
     
-    data.forEach(r => {
-      const card = document.createElement('div');
+    var reviewsToRender = data.slice(0, 3);
+    
+    reviewsToRender.forEach(function(r) {
+      var card = document.createElement('div');
       card.className = 'test-card';
-      const starsStr = '★'.repeat(r.stars) + '☆'.repeat(5 - r.stars);
-      card.innerHTML = `
-        <div class="test-stars">${starsStr}</div>
-        <p class="test-text">"${r.text}"</p>
-        <div class="test-author">
-          <span class="test-name">${r.name}</span>
-          <span class="test-date">${timeAgo(r.created_at)}</span>
-        </div>
-      `;
+      var starsStr = '★'.repeat(r.stars) + '☆'.repeat(5 - r.stars);
+      card.innerHTML = 
+        '<div class="test-stars">' + starsStr + '</div>' +
+        '<p class="test-text">"' + r.text + '"</p>' +
+        '<div class="test-author">' +
+          '<span class="test-name">' + r.name + '</span>' +
+          '<span class="test-date">' + timeAgo(r.created_at) + '</span>' +
+        '</div>';
       grid.appendChild(card);
       // Forzar animación
       if (typeof io !== 'undefined') io.observe(card);
       else card.classList.add('vis');
     });
     
-    const btnLoadMore = $('#btnLoadMoreReviews');
+    var btnLoadMore = $('#btnLoadMoreReviews');
     if (btnLoadMore) {
-      if (data.length < REVIEWS_PER_PAGE) {
+      if (data.length <= 3) {
         btnLoadMore.style.display = 'none';
       } else {
         btnLoadMore.style.display = 'inline-block';
       }
     }
     
-    currentReviewPage++;
     reveal();
-  }
-
-  const btnLoadMore = $('#btnLoadMoreReviews');
-  if (btnLoadMore) {
-    btnLoadMore.addEventListener('click', loadReviews);
   }
 
   /* ---------- arranque ---------- */
