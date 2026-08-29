@@ -24,6 +24,26 @@
       webLink: 'https://apm-landing.netlify.app'
     },
     {
+      id: 'logra', cat: 'web', cliente: 'Logra Consulting', sector: 'Gestión y consultoría en construcción',
+      titulo: 'Desarrollo de página web profesional para consultora de construcción',
+      resultado: 'De no tener presencia digital a contar con un sitio profesional que refleja la seriedad de la empresa.',
+      portada: 'assets/GIF 1 LOGRA.gif',
+      alt: 'Portada del sitio web de Logra Consulting',
+      logo: '',
+      tags: ['Web', 'Diseño'],
+      reto: 'Logra Consulting no contaba con una página web. Su presencia digital era inexistente, lo que dificultaba transmitir la profesionalidad y experiencia de la empresa en el sector de la construcción.',
+      solucion: 'Diseñé y desarrollé desde cero una página web profesional alineada al branding de la empresa, con formulario de contacto, sección de blog para publicar contenido relevante del sector, y un diseño moderno adaptado a todos los dispositivos.',
+      resultados: ['Presencia digital profesional desde cero', 'Diseño alineado al branding corporativo', 'Formulario de contacto integrado', 'Blog para contenido del sector', 'Sitio adaptado a computadoras y móviles'],
+      evidencia: [
+        { src: 'assets/GIF 1 LOGRA.gif', cap: 'Portada y presentación de la empresa', alt: 'Vista de la portada del sitio web de Logra Consulting', horizontal: true },
+        { src: 'assets/GIF 2 LOGRA.gif', cap: 'Servicios y áreas de expertise', alt: 'Sección de servicios de Logra Consulting' },
+        { src: 'assets/GIF 3 LOGRA.gif', cap: 'Blog con contenido del sector', alt: 'Sección de blog del sitio web de Logra Consulting' },
+        { src: 'assets/GIF 4 LOGRA.gif', cap: 'Formulario de contacto', alt: 'Formulario de contacto integrado en el sitio' },
+        { src: 'assets/GIF 5 LOGRA.gif', cap: 'Diseño responsive y navegación', alt: 'Vista de la navegación y diseño adaptativo del sitio' }
+      ],
+      webLink: 'https://lograconsulting.com/'
+    },
+    {
       id: 'software', cat: 'software', cliente: 'Estacionamiento', sector: 'Movilidad urbana',
       titulo: 'Sistema de gestión para estacionamiento',
       resultado: 'El registro en papel pasó a ser digital, con tickets y reportes automáticos.',
