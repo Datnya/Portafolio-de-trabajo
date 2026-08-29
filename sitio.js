@@ -44,6 +44,24 @@
       webLink: 'https://lograconsulting.com/'
     },
     {
+      id: 'dream', cat: 'web', cliente: 'DreamExps', sector: 'Agencia de viajes',
+      titulo: 'Catálogo de experiencias de viaje con reserva directa',
+      resultado: 'Catálogo digital interactivo optimizado para cerrar ventas por WhatsApp.',
+      portada: 'assets/GIF 1 DREAM.gif',
+      alt: 'Portada del sitio web de DreamExps',
+      logo: '',
+      tags: ['Web', 'Turismo'],
+      reto: 'La agencia no contaba con página web, por lo que los clientes no tenían un lugar centralizado donde ver los paquetes de experiencias de viaje de forma clara y accesible.',
+      solucion: 'Diseñé una página web con secciones de Inicio, Quiénes somos, Blog, Contacto y Servicios. Todo el sitio está estructurado y optimizado con llamadas a la acción (CTAs) para que los usuarios contraten los paquetes directamente vía WhatsApp.',
+      resultados: ['Catálogo digital de paquetes de viaje', 'Múltiples CTAs estratégicos hacia WhatsApp', 'Secciones de Blog e información corporativa', 'Diseño atractivo para el sector turismo'],
+      evidencia: [
+        { src: 'assets/GIF 1 DREAM.gif', cap: 'Portada y presentación', alt: 'Vista de la portada de DreamExps', horizontal: true },
+        { src: 'assets/GIF 2 DREAM.gif', cap: 'Paquetes y experiencias', alt: 'Sección de paquetes y experiencias de viaje' },
+        { src: 'assets/GIF 3 DREAM.gif', cap: 'Contacto y Blog', alt: 'Sección de contacto y blog' }
+      ],
+      webLink: 'https://dreamexps.com/'
+    },
+    {
       id: 'software', cat: 'software', cliente: 'Estacionamiento', sector: 'Movilidad urbana',
       titulo: 'Sistema de gestión para estacionamiento',
       resultado: 'El registro en papel pasó a ser digital, con tickets y reportes automáticos.',
@@ -105,7 +123,7 @@
         var portada = '';
         if (p.portada) {
           if (p.portada.endsWith('.mp4')) {
-            portada = '<video src="' + p.portada + '" autoplay muted loop playsinline preload="metadata" aria-label="' + esc(p.alt) + '"></video>';
+            portada = '<video src="' + p.portada + '" autoplay muted loop playsinline preload="auto" aria-label="' + esc(p.alt) + '"></video>';
           } else {
             portada = '<img src="' + p.portada + '" alt="' + esc(p.alt) + '" />';
           }
@@ -133,7 +151,7 @@
           var isHoriz = e.horizontal;
           var style = isHoriz ? ' style="aspect-ratio:16/9;object-fit:cover;max-height:none;height:auto;"' : '';
           var media = e.src.endsWith('.mp4') 
-            ? '<video class="media-zoom" src="' + e.src + '" autoplay muted loop playsinline preload="metadata" aria-label="' + esc(e.alt) + '"' + style + '></video>'
+            ? '<video class="media-zoom" src="' + e.src + '" autoplay muted loop playsinline preload="auto" aria-label="' + esc(e.alt) + '"' + style + '></video>'
             : '<img class="media-zoom" src="' + e.src + '" alt="' + esc(e.alt) + '"' + style + ' />';
           return '<figure>' + media + '<figcaption>' + esc(e.cap) + '</figcaption></figure>';
         }).join('') + '</div>'
@@ -224,7 +242,7 @@
     media.className = 'svc-media ' + (v.media ? 'con-video' : 'sin-video');
     media.innerHTML = v.media
       ? (v.media.endsWith('.mp4') 
-          ? '<video class="media-zoom" src="' + v.media + '" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>'
+          ? '<video class="media-zoom" src="' + v.media + '" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>'
           : '<img class="media-zoom" src="' + v.media + '" aria-hidden="true" />')
       : '<p class="svc-word">' + esc(v.titulo) + '</p>';
     tag.textContent = v.tag;
@@ -252,6 +270,9 @@
     cuerpo.style.transition = 'opacity .45s ease, transform .45s ease';
     cuerpo.style.opacity = '1'; cuerpo.style.transform = 'none';
     setTimeout(function(){ cuerpo.style.transition = ''; }, 500);
+    
+    var vid = media.querySelector('video');
+    if (vid) vid.play().catch(function(e) { console.log('Autoplay preventions handled', e); });
   }
 
 
