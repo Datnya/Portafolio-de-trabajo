@@ -104,6 +104,30 @@
         { src: 'assets/GIF plataforma 2.gif', cap: 'Seguimiento de servicios', alt: 'Demostración del seguimiento de servicios en la plataforma' },
         { src: 'assets/GIF plataforma 3.gif', cap: 'Control y reportes', alt: 'Demostración del control y reportes en la plataforma' }
       ], demoBtn: true
+    },
+    {
+      id: 'procurement-hotelero', cat: 'platforms', cliente: 'Procurement hotelero', sector: 'Compras y logística hotelera',
+      titulo: 'Plataforma de gestión para Procurement Hotelero',
+      resultado: 'Proyectos, proveedores, compras, facturación y logística centralizados en una única plataforma.',
+      portada: '',
+      alt: 'Vista general de la plataforma de gestión para procurement hotelero',
+      logo: '',
+      tags: ['Plataforma', 'Procurement', 'Hotelería'],
+      reto: 'Centralizar procesos que involucraban proyectos hoteleros, proveedores, trabajadores, documentos y órdenes de compra.',
+      solucion: 'Desarrollé una plataforma empresarial personalizada que reúne toda la operación en un único sistema y permite seguir ampliándola conforme aparecen nuevas necesidades.',
+      funcionalidades: [
+        'Gestión centralizada de proyectos hoteleros y SPECs',
+        'Administración de proveedores y órdenes de compra',
+        'Control de facturación y seguimiento logístico',
+        'Gestión de usuarios, trabajadores y permisos',
+        'Acceso dedicado para clientes'
+      ],
+      resultados: [
+        'Toda la operación reunida en un único sistema',
+        'Información y documentos accesibles desde un solo lugar',
+        'Base flexible para incorporar nuevas funciones según evoluciona el negocio'
+      ],
+      evidencia: []
     }
   ];
 
@@ -164,6 +188,11 @@
           '<h3 class="case-h" style="max-width:none;">' + esc(c.titulo) + '</h3>' +
           '<div class="box"><h4>El reto</h4><p>' + esc(c.reto) + '</p></div>' +
           '<div class="box"><h4>La solución</h4><p>' + esc(c.solucion) + '</p></div>' +
+          (c.funcionalidades && c.funcionalidades.length
+            ? '<div class="res case-features" style="margin-top:0;"><h4 class="eyebrow">Funcionalidades</h4><div class="res-list">' +
+                c.funcionalidades.map(function (t) { return '<p class="res-item"><i>→</i>' + esc(t) + '</p>'; }).join('') +
+              '</div></div>'
+            : '') +
           '<div class="res" style="margin-top:0;"><h4 class="eyebrow">El resultado</h4><div class="res-list">' +
             c.resultados.map(function (t) { return '<p class="res-item"><i>→</i>' + esc(t) + '</p>'; }).join('') +
           '</div></div>' +

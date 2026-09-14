@@ -23,9 +23,9 @@
           .nav :focus-visible,.band :focus-visible,.ft :focus-visible{outline-color:var(--delta-on-dark)}
           .wrap{max-width:var(--wrap);margin:0 auto;padding:0 clamp(1.25rem,4vw,2.5rem)}
           .sec{padding:var(--pad-sec) 0}
-          /* El caso cierra la sección Trabajo y ya aporta su propio relleno
-             inferior: sin esto se apilaban tres rellenos seguidos. */
-          #trabajo{padding-bottom:0}
+          /* El detalle del caso se abre en un modal, por lo que la rejilla necesita
+             su propio cierre visual antes de la siguiente sección oscura. */
+          #trabajo{padding-bottom:clamp(4.5rem,8vw,7.5rem)}
           .eyebrow{font-size:.72rem;font-weight:600;letter-spacing:.16em;
                    text-transform:uppercase;color:var(--meta-700)}
           .lede{color:var(--meta-700);max-width:var(--measure)}
