@@ -2,5 +2,14 @@
   "rewrites": [
     { "source": "/tarjeta", "destination": "/tarjeta/index.html" },
     { "source": "/contacto", "destination": "/contacto/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/datnya-monzon.vcf",
+      "headers": [
+        { "key": "Content-Type", "value": "text/vcard; charset=utf-8" },
+        { "key": "Content-Disposition", "value": "inline; filename=\"datnya-monzon.vcf\"" }
+      ]
+    }
   ]
 }

@@ -40,27 +40,6 @@
     }
   }
 
-  function escapeVCard(value) {
-    return String(value).replace(/\\/g, '\\\\').replace(/\r?\n/g, '\\n').replace(/,/g, '\\,').replace(/;/g, '\\;');
-  }
-
-  function createVCard() {
-    const lines = [
-      'BEGIN:VCARD',
-      'VERSION:3.0',
-      'N:Monzón;Datnya;;;',
-      `FN:${escapeVCard(config.name)}`,
-      `TITLE:${escapeVCard(config.role)}`,
-      `TEL;TYPE=CELL:${config.phone}`,
-      `EMAIL;TYPE=INTERNET:${config.email}`,
-      `URL:${config.website}`,
-      `URL;TYPE=LinkedIn:${config.linkedin}`
-    ];
-    if (config.organization) lines.push(`ORG:${escapeVCard(config.organization)}`);
-    lines.push('END:VCARD');
-    return `${lines.join('\r\n')}\r\n`;
-  }
-
   function whatsappUrl() {
     const eventName = ref === 'open-innovation-grow-night' ? 'Open Innovation Grow Night' : 'un evento de networking';
     const message = `Hola Datnya, nos conocimos en ${eventName}. Me gustaría conversar contigo sobre una posible solución para mi empresa.`;
@@ -85,17 +64,11 @@
     linkedin: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.4 20.4h-3.5v-5.5c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9v5.6H9.4V9h3.4v1.6h.04c.5-.9 1.6-1.9 3.4-1.9 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.06 2.06 0 1 1 0-4.1 2.06 2.06 0 0 1 0 4.1zm1.8 13H3.6V9h3.5v11.4zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.5C0 23.2.8 24 1.8 24h20.4c1 0 1.8-.8 1.8-1.8V1.7C24 .8 23.2 0 22.2 0z"/></svg>'
   };
 
-  function contactActionButton({ label, icon, href, style = '', event, newTab = false, download = false, disabled = false }) {
+  function contactActionButton({ label, icon, href, style = '', event, newTab = false, disabled = false }) {
     const node = document.createElement(disabled ? 'span' : 'a');
     node.className = `action-button${style ? ` action-button--${style}` : ''}${disabled ? ' action-button--disabled' : ''}`;
-    node.innerHTML = `${icons[icon]}<span class="action-button__label"></span><span class="action-button__arrow" aria-hidden="true">${disabled ? '' : download ? '↓' : newTab ? '↗' : '→'}</span>`;
+    node.innerHTML = `${icons[icon]}<span class="action-button__label"></span><span class="action-button__arrow" aria-hidden="true">${disabled ? '' : newTab ? '↗' : '→'}</span>`;
     node.querySelector('.action-button__label').textContent = label;
-    if (download) {
-      const hint = document.createElement('small');
-      hint.className = 'action-button__hint';
-      hint.textContent = 'Descarga y abre en Contactos';
-      node.querySelector('.action-button__label').append(hint);
-    }
     if (disabled) {
       node.setAttribute('aria-disabled', 'true');
       const hint = document.createElement('small');
@@ -108,7 +81,6 @@
         node.target = '_blank';
         node.rel = 'noopener noreferrer';
       }
-      if (download) node.download = 'datnya-monzon.vcf';
       if (event) node.addEventListener('click', () => track(event));
     }
     return node;
@@ -118,15 +90,12 @@
     const actions = document.getElementById('contact-actions');
     if (!actions) return;
 
-    const vcardUrl = URL.createObjectURL(new Blob([createVCard()], { type: 'text/vcard;charset=utf-8' }));
-    // El navegador libera esta URL con el documento. Mantenerla durante toda la
-    // sesión permite volver desde el portafolio usando el historial y descargarla.
     const whatsApp = whatsappUrl();
     const booking = validExternalUrl(config.bookingUrl);
     const linkedin = validExternalUrl(config.linkedin);
 
     actions.append(
-      contactActionButton({ label: 'Guardar mi contacto', icon: 'contact', href: vcardUrl, style: 'primary', event: 'networking_contact_save', download: true }),
+      contactActionButton({ label: 'Guardar mi contacto', icon: 'contact', href: '/datnya-monzon.vcf', style: 'primary', event: 'networking_contact_save' }),
       contactActionButton({ label: 'Escríbeme por WhatsApp', icon: 'whatsapp', href: whatsApp, style: 'strong', event: 'networking_whatsapp_click', newTab: true }),
       contactActionButton({ label: 'Agendar una reunión de 15 min', icon: 'calendar', href: booking, event: 'networking_booking_click', newTab: true, disabled: !booking }),
       contactActionButton({ label: 'Ver mi portafolio', icon: 'portfolio', href: config.website, event: 'networking_portfolio_click' }),
