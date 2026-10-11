@@ -17,7 +17,9 @@ de contacto y antes de publicar. El botón abre directamente esta vCard 3.0 con
 `Content-Disposition: inline`, para que un móvil compatible ofrezca la ficha en
 Contactos. El navegador puede descargar el archivo según su configuración; en
 ese caso se abre desde Descargas. El guardado siempre requiere confirmación de
-la persona. `contactDisplayName` añade «Desarrollo Web» al nombre guardado.
+la persona. El primer toque en «Guardar mi contacto» abre un cuadro con el
+nombre configurado en `contactDisplayName`; «Guardar contacto» abre la vCard.
+El cuadro no afirma que el contacto se guardó, porque la web no puede comprobarlo.
 
 ## QR por evento
 

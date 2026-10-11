@@ -64,9 +64,10 @@
     linkedin: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.4 20.4h-3.5v-5.5c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9v5.6H9.4V9h3.4v1.6h.04c.5-.9 1.6-1.9 3.4-1.9 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.06 2.06 0 1 1 0-4.1 2.06 2.06 0 0 1 0 4.1zm1.8 13H3.6V9h3.5v11.4zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.5C0 23.2.8 24 1.8 24h20.4c1 0 1.8-.8 1.8-1.8V1.7C24 .8 23.2 0 22.2 0z"/></svg>'
   };
 
-  function contactActionButton({ label, icon, href, style = '', event, newTab = false, disabled = false }) {
-    const node = document.createElement(disabled ? 'span' : 'a');
+  function contactActionButton({ label, icon, href, style = '', event, newTab = false, disabled = false, onClick }) {
+    const node = document.createElement(disabled ? 'span' : onClick ? 'button' : 'a');
     node.className = `action-button${style ? ` action-button--${style}` : ''}${disabled ? ' action-button--disabled' : ''}`;
+    if (onClick) node.type = 'button';
     node.innerHTML = `${icons[icon]}<span class="action-button__label"></span><span class="action-button__arrow" aria-hidden="true">${disabled ? '' : newTab ? '↗' : '→'}</span>`;
     node.querySelector('.action-button__label').textContent = label;
     if (disabled) {
@@ -76,8 +77,9 @@
       hint.textContent = 'Disponible próximamente';
       node.querySelector('.action-button__label').append(hint);
     } else {
-      node.href = href;
-      if (newTab) {
+      if (onClick) node.addEventListener('click', onClick);
+      else node.href = href;
+      if (newTab && !onClick) {
         node.target = '_blank';
         node.rel = 'noopener noreferrer';
       }
@@ -90,12 +92,29 @@
     const actions = document.getElementById('contact-actions');
     if (!actions) return;
 
+    const contactDialog = document.getElementById('contact-dialog');
+    const contactName = document.getElementById('contact-display-name');
+    const contactSave = document.getElementById('contact-dialog-save');
+    const contactClose = document.getElementById('contact-dialog-close');
+    contactName.textContent = config.contactDisplayName;
+    contactClose.addEventListener('click', () => contactDialog.close());
+    contactDialog.addEventListener('keydown', event => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        contactDialog.close();
+      }
+    });
+    contactSave.addEventListener('click', () => {
+      track('networking_contact_save');
+      contactDialog.close();
+    });
+
     const whatsApp = whatsappUrl();
     const booking = validExternalUrl(config.bookingUrl);
     const linkedin = validExternalUrl(config.linkedin);
 
     actions.append(
-      contactActionButton({ label: 'Guardar mi contacto', icon: 'contact', href: '/datnya-monzon.vcf', style: 'primary', event: 'networking_contact_save' }),
+      contactActionButton({ label: 'Guardar mi contacto', icon: 'contact', style: 'primary', onClick: () => contactDialog.showModal() }),
       contactActionButton({ label: 'Escríbeme por WhatsApp', icon: 'whatsapp', href: whatsApp, style: 'strong', event: 'networking_whatsapp_click', newTab: true }),
       contactActionButton({ label: 'Agendar una reunión de 15 min', icon: 'calendar', href: booking, event: 'networking_booking_click', newTab: true, disabled: !booking }),
       contactActionButton({ label: 'Ver mi portafolio', icon: 'portfolio', href: config.website, event: 'networking_portfolio_click' }),
