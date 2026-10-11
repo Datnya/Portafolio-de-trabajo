@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/tarjeta", "destination": "/tarjeta/index.html" },
+    { "source": "/contacto", "destination": "/contacto/index.html" }
+  ]
+}
