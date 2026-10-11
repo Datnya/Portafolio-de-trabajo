@@ -7,9 +7,8 @@ nofollow`. `vercel.json` resuelve esas rutas sin extensión en el dominio actual
 ## Datos editables
 
 Editar `contact-config.js`. El teléfono, correo y LinkedIn se copiaron de los
-enlaces del home al crear esta funcionalidad. `bookingUrl` está vacío hasta que se
-configure un enlace de Google Calendar Appointment Schedule, Calendly o Microsoft Bookings.
-Al añadirlo, la acción de reserva se activa y abre en una nueva pestaña. `organization`
+enlaces del home al crear esta funcionalidad. `bookingUrl` apunta a la agenda pública
+de 15 minutos de Google Calendar y abre en una nueva pestaña. `organization`
 es opcional y solo aparece en la vCard cuando tiene valor.
 
 La vCard pública `datnya-monzon.vcf` se genera desde esta configuración con

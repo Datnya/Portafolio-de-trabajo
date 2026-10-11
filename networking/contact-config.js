@@ -1,6 +1,5 @@
 // Datos editables de la tarjeta. Los datos de contacto provienen del home actual.
-// Añade la URL de reservas de 15 minutos cuando hayas creado tu agenda
-// en Google Calendar Appointment Schedule, Calendly o Microsoft Bookings.
+// URL pública de la agenda de citas de 15 minutos en Google Calendar.
 window.contactConfig = Object.freeze({
   name: 'Datnya Monzón',
   contactDisplayName: 'Datnya Monzón · Desarrollo Web',
@@ -9,6 +8,6 @@ window.contactConfig = Object.freeze({
   phone: '+51912424331',
   email: 'datnyamonzon1@gmail.com',
   linkedin: 'https://www.linkedin.com/in/datnya-monz%C3%B3n-9839a0356/',
-  bookingUrl: '', // BOOKING_URL: página pública de reservas de 15 minutos
+  bookingUrl: 'https://calendar.app.google/yKz3cLbZ6KrwQwPq5',
   organization: '' // Completar solo si deseas incluir una marca en la vCard.
 });
