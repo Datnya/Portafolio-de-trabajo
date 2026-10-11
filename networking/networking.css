@@ -94,10 +94,8 @@ body { margin: 0; }
 .contact-dialog::backdrop { background: rgba(0,0,0,.62); }
 .contact-dialog__close { position: absolute; top: 9px; right: 9px; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: var(--meta-700); font: 400 1.8rem/1 Poppins, system-ui, sans-serif; cursor: pointer; }
 .contact-dialog__close:hover { background: var(--meta-100); }
-.contact-dialog h2 { margin: 0 40px 12px 0; font-size: 1.35rem; line-height: 1.25; }
 .contact-dialog p { margin: 0; font-size: .91rem; }
-.contact-dialog strong { color: var(--frame); }
-.contact-dialog .contact-dialog__note { margin-top: 10px; color: var(--meta-700); font-size: .82rem; }
+.contact-dialog strong { display: block; margin-top: 5px; color: var(--frame); font-size: 1.04rem; }
 .contact-dialog__save { justify-content: center; margin-top: 24px; text-align: center; }
 .contact-dialog__save span { margin-left: auto; }
 .networking-cta { padding: 22px 27px 27px; border-top: 1px solid var(--meta-200); background: var(--meta-100); }

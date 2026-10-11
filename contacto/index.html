@@ -38,11 +38,9 @@
       </aside>
     </article>
   </main>
-  <dialog id="contact-dialog" class="contact-dialog" aria-labelledby="contact-dialog-title" aria-describedby="contact-dialog-description">
+  <dialog id="contact-dialog" class="contact-dialog" aria-label="Guardar contacto" aria-describedby="contact-dialog-description">
     <button id="contact-dialog-close" class="contact-dialog__close" type="button" aria-label="Cerrar">×</button>
-    <h2 id="contact-dialog-title">Guardar contacto</h2>
-    <p id="contact-dialog-description">La ficha está preparada con el nombre <strong id="contact-display-name"></strong>.</p>
-    <p class="contact-dialog__note">Después, confirma «Guardar» en tu teléfono.</p>
+    <p id="contact-dialog-description" class="contact-dialog__message">Vas a guardar este contacto como: <strong id="contact-display-name"></strong></p>
     <a id="contact-dialog-save" class="action-button action-button--primary contact-dialog__save" href="/datnya-monzon.vcf" autofocus>Guardar contacto <span aria-hidden="true">→</span></a>
   </dialog>
 </body>
