@@ -62,6 +62,31 @@
       webLink: 'https://dreamexps.com/'
     },
     {
+      id: 'sello-nostra', cat: 'web', cliente: 'Sello Nostra Corp', sector: 'Industria musical y asesoría legal',
+      titulo: 'Sitio web y presencia digital para Sello Nostra Corp',
+      resultado: 'De depender de redes sociales a tener web, dominio y correo corporativo propios.',
+      portada: 'assets/sello-portada.mp4',
+      alt: 'Portada de Sello Nostra Corp con el mensaje sobre convertir el arte en negocio',
+      logo: '',
+      tags: ['Web', 'Diseño', 'Infraestructura'],
+      reto: 'La empresa solo tenía presencia en Instagram y TikTok. No contaba con un sitio propio para presentar sus servicios y planes, ni con dominio y correos corporativos.',
+      solucion: 'Diseñé y desarrollé el sitio web, preparé sus contenidos para presentar las áreas de negocio musical, asesoría legal y planes de servicio, y configuré el dominio, hosting, cPanel y correos corporativos. El paquete incluye mi soporte durante un año para administrar esa infraestructura.',
+      resultados: [
+        'Sitio con diseño y contenidos propios para presentar servicios, planes y trayectoria',
+        'Dominio, hosting y correos corporativos configurados',
+        'Contacto directo desde la web por WhatsApp y correo',
+        'Soporte anual para dominio, hosting y cPanel'
+      ],
+      evidencia: [
+        { src: 'assets/sello-portada.mp4', cap: 'Portada y propuesta de valor', alt: 'Inicio de Sello Nostra Corp con el mensaje principal y acceso a sus servicios', horizontal: true },
+        { src: 'assets/sello-servicios.mp4', cap: 'Trayectoria y áreas de servicio', alt: 'Indicadores de trayectoria y presentación de las áreas de servicio de Sello Nostra Corp', horizontal: true },
+        { src: 'assets/sello-artistas.mp4', cap: 'Artistas y proyectos', alt: 'Carrusel de artistas y proyectos con un testimonio destacado', horizontal: true },
+        { src: 'assets/sello-playlist.mp4', cap: 'Playlist de Sello Nostra', alt: 'Sección musical con una playlist integrada de Spotify', horizontal: true },
+        { src: 'assets/sello-clientes.mp4', cap: 'Clientes y marcas', alt: 'Sección de clientes y marcas que confían en Sello Nostra Corp', horizontal: true }
+      ],
+      webLink: 'https://sellonostracorp.com/'
+    },
+    {
       id: 'software', cat: 'software', cliente: 'Estacionamiento', sector: 'Movilidad urbana',
       titulo: 'Sistema de gestión para estacionamiento',
       resultado: 'El registro en papel pasó a ser digital, con tickets y reportes automáticos.',
