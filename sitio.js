@@ -87,6 +87,30 @@
       webLink: 'https://sellonostracorp.com/'
     },
     {
+      id: 'crypto-solutions-latam', cat: 'web', cliente: 'Crypto Solutions Latam', sector: 'LegalTech y criptoactivos',
+      titulo: 'Web corporativa para Crypto Solutions Latam',
+      resultado: 'De no tener web a presentar sus dos áreas con marca propia y contacto directo por WhatsApp.',
+      portada: 'assets/crypto-portada.mp4',
+      alt: 'Portada de Crypto Solutions Latam con su propuesta de valor y acceso a sus áreas',
+      logo: '',
+      tags: ['Web', 'Diseño', 'Infraestructura'],
+      reto: 'La empresa no tenía página web y necesitaba una presencia profesional para presentar sus áreas de trabajo y facilitar el primer contacto con sus clientes.',
+      solucion: 'A partir de los logos entregados por el cliente, definí la paleta de colores y el diseño visual. Organicé la estructura, redacté los contenidos y desarrollé la web desde cero, con llamadas a la acción visibles hacia el WhatsApp de la empresa. También gestioné su dominio, hosting y correos corporativos. El servicio incluye soporte anual para el hosting y el dominio.',
+      resultados: [
+        'Sitio corporativo con diseño y contenidos propios para presentar ambas áreas',
+        'Accesos visibles a WhatsApp a lo largo de la web',
+        'Dominio, hosting y correos corporativos configurados',
+        'Soporte anual para hosting y dominio'
+      ],
+      evidencia: [
+        { src: 'assets/crypto-portada.mp4', cap: 'Portada y propuesta de valor', alt: 'Inicio de Crypto Solutions Latam con su mensaje principal y acceso a las áreas de trabajo', horizontal: true },
+        { src: 'assets/crypto-orientacion.mp4', cap: 'Orientación y contacto directo', alt: 'Sección de orientación con una llamada a conversar sobre el caso por WhatsApp', horizontal: true },
+        { src: 'assets/crypto-legaltech.mp4', cap: 'Área LegalTech Protectores', alt: 'Presentación del área LegalTech Protectores y su acceso de contacto', horizontal: true },
+        { src: 'assets/crypto-activos.mp4', cap: 'Área de criptoactivos', alt: 'Presentación del área de criptoactivos de Crypto Solutions Latam', horizontal: true }
+      ],
+      webLink: 'https://cryptosolutionslatam.com/'
+    },
+    {
       id: 'software', cat: 'software', cliente: 'Estacionamiento', sector: 'Movilidad urbana',
       titulo: 'Sistema de gestión para estacionamiento',
       resultado: 'El registro en papel pasó a ser digital, con tickets y reportes automáticos.',
